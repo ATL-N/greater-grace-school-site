@@ -5,12 +5,12 @@ import Link from "next/link";
 // Event data structure
 const schoolEvents = [
   {
-    id: 1,
-    title: "Annual Sports Day 2024",
+    id: 1, // Kept the original ID, but updated content
+    title: "Music Practice Class", // Changed title
     description:
-      "Our annual interschool sports competition featuring track events, team sports, and individual challenges.",
-    date: "March 15, 2024",
-    image: "/images/events/sports-day-1.jpg",
+      "Join us for our regular music practice session. All levels welcome.", // Changed description
+    date: "January 24, 2024", // Changed date (example)
+    image: "/images/events/brassband.jpeg", // Changed image (example)
   },
   {
     id: 2,
@@ -18,24 +18,56 @@ const schoolEvents = [
     description:
       "Students showcase their innovative science projects and experiments to the school community and guest judges.",
     date: "February 20, 2024",
-    image: "/images/events/science-fair-1.jpg",
+    image: "/images/events/ggca science fair 1.jpg",
   },
   {
     id: 3,
     title: "Annual Cultural Day",
     description:
       "A celebration of diverse cultures through performances, exhibitions, and interactive activities.",
-    date: "December 10, 2023",
-    image: "/images/events/cultural-day-1.jpg",
+    date: "December 10, 2024",
+    image: "/images/events/culture5.jpeg",
   },
-  {
-    id: 4,
-    title: "Graduation Ceremony 2024",
-    description:
-      "Celebrating the achievements of our graduating class as they prepare for their next chapter.",
-    date: "May 28, 2024",
-    image: "/images/events/graduation-1.jpg",
-  },
+  // {
+  //   id: 4,
+  //   title: "Graduation Ceremony 2024",
+  //   description:
+  //     "Celebrating the achievements of our graduating class as they prepare for their next chapter.",
+  //   date: "May 28, 2024",
+  //   image: "/images/events/graduation-1.jpg",
+  // },
+  // {
+  //   id: 5,
+  //   title: "Annual Sports Day 2024",
+  //   description:
+  //     "Our annual interschool sports competition featuring track events, team sports, and individual challenges.",
+  //   date: "March 15, 2024",
+  //   image: "/images/events/sports-day-1.jpg",
+  // },
+  // {
+  //   id: 6,
+  //   title: "Science Fair 2025",
+  //   description:
+  //     "Students showcase their innovative science projects and experiments to the school community and guest judges.",
+  //   date: "February 20, 2024",
+  //   image: "/images/events/science-fair-1.jpg",
+  // },
+  // {
+  //   id: 7,
+  //   title: "Annual Cultural Day",
+  //   description:
+  //     "A celebration of diverse cultures through performances, exhibitions, and interactive activities.",
+  //   date: "December 10, 2023",
+  //   image: "/images/events/cultural-day-1.jpg",
+  // },
+  // {
+  //   id: 8,
+  //   title: "Graduation Ceremony 2024",
+  //   description:
+  //     "Celebrating the achievements of our graduating class as they prepare for their next chapter.",
+  //   date: "May 28, 2024",
+  //   image: "/images/events/graduation-1.jpg",
+  // },
 ];
 
 // Event Card Component

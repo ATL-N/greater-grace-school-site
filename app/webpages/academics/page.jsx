@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 // import Navbar from "../components/Navbar";
 // import Footer from "../components/Footer";
@@ -6,28 +6,27 @@ import { BookOpen, Star, Users, Award } from "lucide-react";
 
 const programs = [
   {
-    level: "Elementary",
-    grades: "1-5",
+    level: "Pre-School",
+    grades: "Creche-Kingdergerten",
     description:
       "Foundation years focusing on core subjects with hands-on learning experiences.",
     subjects: [
-      "Mathematics",
-      "Science",
+      "Writing",
+      "Sribbling",
       "English",
-      "Social Studies",
+      "Environmental Studies",
       "Arts",
       "Physical Education",
     ],
   },
   {
-    level: "Middle School",
-    grades: "6-8",
+    level: "Primary School",
+    grades: "1-6",
     description:
       "Developing critical thinking and specialized interests through advanced coursework.",
     subjects: [
-      "Advanced Mathematics",
-      "Laboratory Sciences",
-      "Literature",
+      "Mathematics",
+      "Integrated Sciences",
       "History",
       "Technology",
       "Languages",
@@ -42,9 +41,8 @@ const programs = [
       "AP Courses",
       "STEM Programs",
       "Humanities",
-      "Fine Arts",
+      "Arts",
       "Sports",
-      "College Prep",
     ],
   },
 ];
@@ -133,7 +131,7 @@ export default function Academics() {
                 style={{ color: "var(--primary-color)" }}
               />
               <h3 className="text-xl font-semibold mb-2">Advanced Placement</h3>
-              <p>Offering 15+ AP courses for college preparation</p>
+              <p>Offering 15+ AP courses for WASSCE & SHS preparation</p>
             </div>
             <div className="text-center p-6 hover-scale animated-element">
               <Users
@@ -142,7 +140,7 @@ export default function Academics() {
                 style={{ color: "var(--primary-color)" }}
               />
               <h3 className="text-xl font-semibold mb-2">Expert Faculty</h3>
-              <p>80% of teachers hold advanced degrees</p>
+              <p>50% of teachers hold degrees</p>
             </div>
             <div className="text-center p-6 hover-scale animated-element">
               <Award
@@ -151,7 +149,7 @@ export default function Academics() {
                 style={{ color: "var(--primary-color)" }}
               />
               <h3 className="text-xl font-semibold mb-2">College Success</h3>
-              <p>98% college acceptance rate</p>
+              <p>100% Senior High School acceptance rate</p>
             </div>
           </div>
         </div>
@@ -171,9 +169,9 @@ export default function Academics() {
               className="text-4xl font-bold mb-2"
               style={{ color: "var(--primary-color)" }}
             >
-              98%
+              100%
             </h3>
-            <p>College Acceptance Rate</p>
+            <p>SHS Acceptance Rate</p>
           </div>
           <div
             className="p-6 rounded-lg hover-scale animated-element"
@@ -197,7 +195,7 @@ export default function Academics() {
             >
               100%
             </h3>
-            <p>AP Pass Rate</p>
+            <p>BECE Pass Rate</p>
           </div>
           <div
             className="p-6 rounded-lg hover-scale animated-element"

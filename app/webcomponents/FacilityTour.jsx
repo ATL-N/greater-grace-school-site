@@ -9,7 +9,7 @@ const facilities = [
     name: "Modern Classrooms",
     description:
       "State-of-the-art classrooms equipped with smart boards and multimedia facilities",
-    imageUrl: "/api/placeholder/800/400",
+    imageUrl: "/images/facilities/classroom 42.jpg",
     features: [
       "Interactive Whiteboards",
       "Ergonomic Furniture",
@@ -19,7 +19,7 @@ const facilities = [
   },
   {
     id: 2,
-    name: "Science Laboratories",
+    name: "Computer Laboratories",
     description:
       "Fully equipped laboratories for physics, chemistry, and biology experiments",
     imageUrl: "/api/placeholder/800/400",
@@ -32,10 +32,10 @@ const facilities = [
   },
   {
     id: 3,
-    name: "Sports Complex",
+    name: "Music Complex",
     description:
       "Comprehensive sports facilities for various indoor and outdoor activities",
-    imageUrl: "/api/placeholder/800/400",
+    imageUrl: "/images/facilities/classroomblock.jpg",
     features: [
       "Indoor Gymnasium",
       "Swimming Pool",
@@ -43,19 +43,19 @@ const facilities = [
       "Football Field",
     ],
   },
-  {
-    id: 4,
-    name: "Library",
-    description:
-      "Extensive collection of books, digital resources, and study areas",
-    imageUrl: "/api/placeholder/800/400",
-    features: [
-      "Digital Catalogs",
-      "Study Rooms",
-      "Online Resources",
-      "Reading Areas",
-    ],
-  },
+  // {
+  //   id: 4,
+  //   name: "Library",
+  //   description:
+  //     "Extensive collection of books, digital resources, and study areas",
+  //   imageUrl: "/api/placeholder/800/400",
+  //   features: [
+  //     "Digital Catalogs",
+  //     "Study Rooms",
+  //     "Online Resources",
+  //     "Reading Areas",
+  //   ],
+  // },
 ];
 
 export default function FacilityTour() {

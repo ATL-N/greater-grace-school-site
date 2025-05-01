@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import FacilityTour from "../../webcomponents/FacilityTour";
 import ImageGallery from "../../webcomponents/ImageGallery";

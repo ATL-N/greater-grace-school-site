@@ -62,7 +62,7 @@ export default function Navbar() {
           <div className="flex items-center space-x-2">
             <Image
               src="/favicon.ico"
-              alt="Cyan Academy Logo"
+              alt="Greater Grace Christian Academy Logo"
               width={32}
               height={32}
               className="hover:rotate-12 transition-transform duration-300"
@@ -72,7 +72,7 @@ export default function Navbar() {
               className="text-2xl font-bold hover:opacity-80 transition-opacity duration-200"
               style={{ color: "var(--primary-color)" }}
             >
-              CYAN ACADEMY
+              Greater Grace Christian Academy
             </Link>
           </div>
 
@@ -123,7 +123,7 @@ export default function Navbar() {
               </Link>
 
               {/* External Link Button */}
-              <a
+              {/* <a
                 href="https://portal.cyanacademy.edu" // Replace with actual portal URL
                 target="_blank"
                 rel="noopener noreferrer"
@@ -131,7 +131,7 @@ export default function Navbar() {
                 style={{ backgroundColor: "var(--primary-color)" }}
               >
                 Portal <ExternalLink className="ml-1" size={16} />
-              </a>
+              </a> */}
 
               <button
                 onClick={toggleTheme}

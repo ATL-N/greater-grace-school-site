@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 // import Navbar from "../../components/Navbar";
 // import Footer from "../../components/Footer";
@@ -20,7 +20,7 @@ export default function Admissions() {
             Join Our Community
           </h1>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Begin your journey at Cyan Academy. We're looking for curious minds,
+            Begin your journey at Greater Grace Christian Academy. We're looking for curious minds,
             creative thinkers, and passionate learners to join our diverse
             community.
           </p>
@@ -52,9 +52,9 @@ export default function Admissions() {
                 size={40}
                 style={{ color: "var(--primary-color)" }}
               />
-              <h3 className="text-xl font-semibold mb-2">Submit Application</h3>
+              <h3 className="text-xl font-semibold mb-2">Contact the School</h3>
               <p>
-                Complete the online application form with all required documents
+                Contact the schools for enquiries on the vacancy for new admission.
               </p>
             </div>
             <div
@@ -128,13 +128,13 @@ export default function Admissions() {
             >
               <h3 className="text-xl font-semibold mb-4">Required Documents</h3>
               <ul className="space-y-3">
-                <li className="flex items-center">
+                {/* <li className="flex items-center">
                   <span
                     className="w-2 h-2 rounded-full mr-3"
                     style={{ backgroundColor: "var(--primary-color)" }}
                   ></span>
                   Completed application form
-                </li>
+                </li> */}
                 <li className="flex items-center">
                   <span
                     className="w-2 h-2 rounded-full mr-3"
@@ -173,13 +173,13 @@ export default function Admissions() {
                 Academic Requirements
               </h3>
               <ul className="space-y-3">
-                <li className="flex items-center">
+                {/* <li className="flex items-center">
                   <span
                     className="w-2 h-2 rounded-full mr-3"
                     style={{ backgroundColor: "var(--primary-color)" }}
                   ></span>
                   Minimum GPA of 3.0
-                </li>
+                </li> */}
                 <li className="flex items-center">
                   <span
                     className="w-2 h-2 rounded-full mr-3"
@@ -187,13 +187,13 @@ export default function Admissions() {
                   ></span>
                   Satisfactory attendance record
                 </li>
-                <li className="flex items-center">
+                {/* <li className="flex items-center">
                   <span
                     className="w-2 h-2 rounded-full mr-3"
                     style={{ backgroundColor: "var(--primary-color)" }}
                   ></span>
                   English proficiency
-                </li>
+                </li> */}
                 <li className="flex items-center">
                   <span
                     className="w-2 h-2 rounded-full mr-3"
@@ -215,7 +215,7 @@ export default function Admissions() {
       </section>
 
       {/* Contact Form Section */}
-      <section
+      {/* <section
         className="py-12 px-4 sm:px-6 lg:px-8"
         style={{ backgroundColor: "var(--accent-color)" }}
       >
@@ -225,7 +225,7 @@ export default function Admissions() {
           </h2>
           <ContactForm />
         </div>
-      </section>
+      </section> */}
 
       {/* <Footer /> */}
     </main>

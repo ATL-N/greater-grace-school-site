@@ -6,7 +6,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Cyan Academy - Where Future Leaders Emerge",
+  title: "Greater Grace Christian Academy - Where Future Leaders Emerge",
   description: "A modern educational institution focused on excellence",
 };
 

@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 // import Navbar from "../components/Navbar";
 // import Footer from "../components/Footer";
@@ -43,9 +43,9 @@ export default function Contact() {
             />
             <h3 className="text-xl font-semibold mb-2">Visit Us</h3>
             <p>
-              123 Education Avenue
+              Apam, Opposite Apam Senior High School.
               <br />
-              Learning City, ST 12345
+              Apam Junction(Cape Coast - Accra road), Apam - Central Region
             </p>
           </div>
 
@@ -60,9 +60,9 @@ export default function Contact() {
             />
             <h3 className="text-xl font-semibold mb-2">Call Us</h3>
             <p>
-              Main Office: (555) 123-4567
+              Main Office: +233 24 499 7473
               <br />
-              Admissions: (555) 123-4568
+              Admissions: +233 24 404 4846
             </p>
           </div>
 
@@ -102,7 +102,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Form Section */}
+      {/* Contact Form Section
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <h2
@@ -115,7 +115,7 @@ export default function Contact() {
             <ContactForm />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Map Section */}
       <section

@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import Link from "next/link";
 import {
@@ -23,7 +23,7 @@ export default function Footer() {
               className="text-2xl font-bold mb-4"
               style={{ color: "var(--primary-color)" }}
             >
-              Cyan Academy
+              Greater Grace Christian Academy, Apam
             </h3>
             <p className="mb-4">
               Shaping tomorrow's leaders through excellence in education and
@@ -78,15 +78,15 @@ export default function Footer() {
             <ul className="space-y-2">
               <li className="flex items-center">
                 <MapPin size={20} className="mr-2" />
-                123 Education Street, Academic City
+                Opposite APASS, APAM
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="mr-2" />
-                +1 234 567 8900
+                +233 24 499 7473
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="mr-2" />
-                info@cyanacademy.edu
+                gracapam@gmail.com
               </li>
             </ul>
           </div>
@@ -105,7 +105,8 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-gray-600 text-center">
           <p>
-            &copy; {new Date().getFullYear()} Cyan Academy. All rights reserved.
+            &copy; {new Date().getFullYear()} Greater Grace Christian Academy,
+            Apam. All rights reserved.
           </p>
         </div>
       </div>

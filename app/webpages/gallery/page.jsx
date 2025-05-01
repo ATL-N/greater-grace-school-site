@@ -143,41 +143,41 @@ export default function Gallery() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             <div className="rounded-lg overflow-hidden shadow-xl hover-scale">
               <img
-                src="/images/facilities/swimming-pool.jpg"
-                alt="Modern Science Laboratory"
+                src="/images/events/graduation20241.jpeg"
+                alt="GGCA Graduation Ceremony 2024"
                 className="w-full h-64 object-cover"
               />
               <div
                 className="p-4"
                 style={{ backgroundColor: "var(--background-color)" }}
               >
-                <p className="font-medium">Modern Science Laboratory</p>
+                <p className="font-medium">Graduation Ceremony 2024</p>
               </div>
             </div>
             <div className="rounded-lg overflow-hidden shadow-xl hover-scale">
               <img
-                src="/images/events/annual-day.jpg"
-                alt="Annual Day Celebration"
+                src="/images/events/culture8.jpeg"
+                alt="Annual Cultural Day"
                 className="w-full h-64 object-cover"
               />
               <div
                 className="p-4"
                 style={{ backgroundColor: "var(--background-color)" }}
               >
-                <p className="font-medium">Annual Day Celebration</p>
+                <p className="font-medium">Annual Culture Day Celebration</p>
               </div>
             </div>
             <div className="rounded-lg overflow-hidden shadow-xl hover-scale">
               <img
-                src="/images/facilities/library.jpg"
-                alt="State-of-the-art Library"
+                src="/images/facilities/classroom 30.jpg"
+                alt="GGCA State-of-the-art computer lab"
                 className="w-full h-64 object-cover"
               />
               <div
                 className="p-4"
                 style={{ backgroundColor: "var(--background-color)" }}
               >
-                <p className="font-medium">State-of-the-art Library</p>
+                <p className="font-medium">State-of-the-art Computer lab</p>
               </div>
             </div>
           </div>

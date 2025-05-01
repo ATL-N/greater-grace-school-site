@@ -6,28 +6,28 @@ import ImageGallery from "../../../webcomponents/ImageGallery";
 
 const facilityImages = [
   {
-    url: "/images/facilities/swimming-pool.jpg",
-    caption: "Modern Science Laboratory",
+    url: "/images/facilities/classroom 30.jpg",
+    caption: "Modern Computer Laboratory",
   },
-  {
-    url: "/images/facilities/gold.png",
-    caption: "Olympic-Size Swimming Pool",
-  },
-  {
-    url: "/images/facilities/library.jpg",
-    caption: "State-of-the-art Library",
-  },
-  {
-    url: "/images/facilities/sports-complex.jpg",
-    caption: "Indoor Sports Complex",
-  },
+  // {
+  //   url: "/images/facilities/classroom 5.jpg",
+  //   caption: "Olympic-Size Swimming Pool",
+  // },
+  // {
+  //   url: "/images/facilities/library.jpg",
+  //   caption: "State-of-the-art Library",
+  // },
+  // {
+  //   url: "/images/facilities/sports-complex.jpg",
+  //   caption: "Indoor Sports Complex",
+  // },
   {
     url: "/images/facilities/digital-center.jpg",
-    caption: "Digital Learning Center",
+    caption: "Digital Music Center",
   },
   {
-    url: "/images/facilities/theater.jpg",
-    caption: "Performing Arts Theater",
+    url: "/images/events/ggca science fair 3.jpg",
+    caption: "Agric Farms",
   },
 ];
 

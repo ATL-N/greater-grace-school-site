@@ -28,14 +28,14 @@ const schoolEvents = [
     date: "December 10, 2024",
     image: "/images/events/culture5.jpeg",
   },
-  // {
-  //   id: 4,
-  //   title: "Graduation Ceremony 2024",
-  //   description:
-  //     "Celebrating the achievements of our graduating class as they prepare for their next chapter.",
-  //   date: "May 28, 2024",
-  //   image: "/images/events/graduation-1.jpg",
-  // },
+  {
+    id: 4,
+    title: "Graduation Ceremony 2024",
+    description:
+      "Celebrating the achievements of our graduating class as they prepare for their next chapter.",
+    date: "May 28, 2024",
+    image: "/images/events/greater-grace-graduation-2024-1.jpeg",
+  },
   // {
   //   id: 5,
   //   title: "Annual Sports Day 2024",

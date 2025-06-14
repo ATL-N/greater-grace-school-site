@@ -124,11 +124,14 @@ const getEventById = (id) => {
       <p>The ceremony concluded with the traditional hat toss, symbolizing the end of one chapter and the beginning of new adventures for our graduates.</p>
     `,
       images: [
-        "/images/events/graduation-1.jpg",
-        "/images/events/graduation-2.jpg",
-        "/images/events/graduation-3.jpg",
+        "/images/events/greater-grace-graduation-2024-1.jpeg",
+        "/images/events/greater-grace-graduation-2024-4.jpeg",
+        "/images/events/greater-grace-graduation-2024-6.jpeg",
+        "/images/events/greater-grace-graduation-2024-12.jpeg",
+        "/images/events/greater-grace-graduation-2024-2.jpeg",
+        "/images/events/greater-grace-graduation-2024-3.jpeg",
       ],
-      videoId: "jkl012mno",
+      videoId: "ZIpj3Yf5RZU",
     },
     {
       id: 5,

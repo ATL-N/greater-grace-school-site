@@ -1,7 +1,66 @@
-// "use client";
-
 import ImageGallery from "../../webcomponents/ImageGallery";
-import { Users, Award, Target, Clock, Book, Globe, Heart, Star } from "lucide-react";
+import {
+  Users,
+  Award,
+  Target,
+  Clock,
+  Book,
+  Globe,
+  Heart,
+  Star,
+} from "lucide-react";
+
+export const metadata = {
+  title: "About | Greater Grace Christian Academy",
+  description:
+    "Learn about Greater Grace Christian Academy's mission, vision, core values, and rich history. Discover our journey since our founding in 2010, and our commitment to excellence in education and holistic student development in Apam.",
+  keywords: [
+    "Christian academy",
+    "education",
+    "school history",
+    "founding story",
+    "mission statement",
+    "core values",
+    "academic excellence",
+    "Greater Grace Christian Academy Apam",
+    "Mr. Acquah",
+    "Mr. Alfred Acquah",
+    "Mrs. Acquah",
+    "Mrs. Innocentia Acquah",
+  ],
+  // Open Graph / Facebook metadata
+  openGraph: {
+    title: "About Greater Grace Christian Academy",
+    description:
+      "Discover our mission, vision, core values, and the inspiring founding story of Greater Grace Christian Academy since 2010. Learn how we shape minds and build futures.",
+    url: "https://greatergracechristianacademygh.org/about",
+    siteName: "Greater Grace Christian Academy",
+    images: [
+      {
+        url: "https://greatergracechristianacademygh.org/images/facilities/classroomblock.jpg", // Make sure this image is relevant or update if needed
+        width: 1200,
+        height: 630,
+        alt: "Greater Grace Christian Academy campus",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  // Twitter metadata
+  twitter: {
+    card: "summary_large_image",
+    title: "About Greater Grace Christian Academy",
+    description:
+      "Discover our mission, vision, core values, and the inspiring founding story of Greater Grace Christian Academy since 2010. Learn how we shape minds and build futures.",
+    images: [
+      "https://greatergracechristianacademygh.org/images/facilities/classroomblock.jpg", // Make sure this image is relevant or update if needed
+    ],
+  },
+  // Additional metadata
+  alternates: {
+    canonical: "https://greatergracechristianacademygh.org/about",
+  },
+};
 
 const galleryImages = [
   {
@@ -43,8 +102,9 @@ export default function About() {
             About Greater Grace Christian Academy
           </h1>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Since 1995, we've been shaping minds and building futures through
-            innovative education and unwavering commitment to excellence.
+            {/* Updated this line slightly to be more general if history details are below */}
+            We are dedicated to shaping minds and building futures through
+            innovative education and an unwavering commitment to excellence.
           </p>
         </div>
       </section>
@@ -73,10 +133,9 @@ export default function About() {
                 Our Mission
               </h2>
               <p className="text-center" style={{ color: "var(--text-color)" }}>
-                To empower students with comprehensive, transformative education
-                that nurtures critical thinking, global citizenship, and
-                personal excellence, preparing them to lead and innovate in an
-                ever-changing world.
+                To offer high quality education with good moral values in a
+                Christian environment and to help produce children of high
+                intellectual abilities.
               </p>
             </div>
 
@@ -97,10 +156,10 @@ export default function About() {
                 Our Vision
               </h2>
               <p className="text-center" style={{ color: "var(--text-color)" }}>
-                To be a world-class educational institution that sets new
-                standards in holistic learning, where every student is equipped
-                to become a compassionate, innovative, and responsible global
-                leader.
+                To produce children with high intellectual abilities and
+                empowering them to grow spiritually and socially, guided by
+                Christian values and principles, to become compassionate leaders
+                positively impacting their communities and the world.
               </p>
             </div>
 
@@ -124,7 +183,7 @@ export default function About() {
                 className="text-center text-xl italic"
                 style={{ color: "var(--text-color)" }}
               >
-                "Hardwork and Humility"
+                "Humility And Hard work"
               </p>
               <p
                 className="text-center mt-2 "
@@ -212,10 +271,11 @@ export default function About() {
                 Our Comprehensive Approach
               </h2>
               <p className="mb-4">
-                At Greater Grace Christian Academy, we believe in a holistic educational approach
-                that goes beyond traditional academics. Our commitment extends
-                to developing well-rounded individuals who are intellectually
-                curious, socially responsible, and emotionally intelligent.
+                At Greater Grace Christian Academy, we believe in a holistic
+                educational approach that goes beyond traditional academics. Our
+                commitment extends to developing well-rounded individuals who
+                are intellectually curious, socially responsible, and
+                emotionally intelligent.
               </p>
               <p className="mb-4">
                 We integrate academic rigor with character development, ensuring
@@ -274,7 +334,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* History Section */}
+      {/* History Section - UPDATED */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -283,28 +343,58 @@ export default function About() {
                 className="text-3xl font-bold mb-6"
                 style={{ color: "var(--primary-color)" }}
               >
-                Our History
+                Our Journey/History: A Legacy of Growth
               </h2>
               <p className="mb-4">
-                Founded in 2010, Greater Grace Christian Academy began with a vision to
-                revolutionize education through innovative teaching methods and
-                a student-centered approach.
+                The story of Greater Grace Christian Academy began in 2010,
+                sparked by the vision and dedication of Mr. Acquah and Mrs.
+                Acquah of Apam. Fueled by a passion for transformative
+                education, the journey commenced with careful planning and the
+                strategic acquisition of our school plot, ideally situated
+                between the Ghana Education Service and Apam Secondary School.
               </p>
               <p className="mb-4">
-                Over the years, we've grown from a small institution of 50
-                students to a leading academic center with over 1,000 students
-                and 100 staff members.
+                With unwavering determination, we launched our initial
+                operations from a temporary space, even as we worked diligently
+                to establish our permanent home. The generous support of
+                community members, particularly individuals like Patricia
+                Incoom, was instrumental during these foundational stages.
               </p>
               <p>
-                Our commitment to excellence has earned us numerous accolades
-                and recognitions, including the National Education Excellence
-                Award in 2023.
+                Resourcefulness and community spirit marked our early path as we
+                proudly established our first Kindergarten structure, followed
+                by our initial two classrooms – laying the groundwork for the
+                vibrant learning community we are today. We continue to build on
+                this legacy, committed to nurturing future leaders and
+                innovators.
               </p>
+              {/* <h5
+                className="text-2xl font-bold mb-6"
+                style={{ color: "var(--text-color)" }}
+              >
+                Our Journey: Our Founding Story
+              </h5>
+              <p>
+                Apam Greater Grace Christian Academy was born from the vision of
+                Mr. Acquah and Mrs. Acquah of Apam. Planning began in August
+                2010 with the securing of our current school plot, conveniently
+                situated near key educational landmarks.
+              </p>
+              <p>
+                Our journey started modestly, operating initially from a
+                temporary location while our main site was in development.
+                Thanks to early community support, including the significant
+                help of individuals like Patricia Incoom, we were able to
+                establish our first Kindergarten building and two classrooms,
+                marking the exciting first steps of our growth.
+              </p> */}
             </div>
             <div className="rounded-lg overflow-hidden animated-element">
+              {/* You might want to choose an image that better reflects the "founding" or "early days" if available,
+                  otherwise, classroomblock.jpg is a good general image. */}
               <img
                 src="/images/facilities/classroomblock.jpg"
-                alt="School History"
+                alt="Greater Grace Christian Academy Campus"
                 className="w-full h-full object-cover"
               />
             </div>

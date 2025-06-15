@@ -10,7 +10,7 @@ RUN npm run build
 FROM node:18-alpine AS runner
 
 WORKDIR /app
-ENV NODE_ENV production
+ENV NODE_ENV='production'
 
 RUN apk update && \
     apk add --no-cache postgresql-client curl

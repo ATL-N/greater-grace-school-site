@@ -132,7 +132,7 @@ const getEventById = (id) => {
     "/images/events/greater-grace-graduation-2024-3.jpeg"
   ],
   "videoId": "ZIpj3Yf5RZU"
-}
+},
     {
       id: 5,
       title: "National Science Quiz Victory",

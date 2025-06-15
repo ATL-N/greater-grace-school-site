@@ -101,38 +101,38 @@ const getEventById = (id) => {
       videoId: "ghi789rst",
     },
     {
-      id: 4,
-      title: "Graduation Ceremony 2024",
-      description:
-        "Celebrating the achievements of our graduating class as they prepare for their next chapter.",
-      date: "May 28, 2024",
-      fullContent: `
-      <p>The Class of 2024 Graduation Ceremony was a momentous occasion held at the Grand City Auditorium. 215 students received their diplomas in front of proud family members, friends, faculty, and staff.</p>
+  "id": 4,
+  "title": "Grand Graduation Day 2024!",
+  "description":
+    "A joyful and colourful celebration of our graduating Class of 2024 as they step boldly into their future, by God's grace.",
+  "date": "May 28, 2024",
+  "fullContent": `
+  <p>The Graduation Ceremony for our esteemed Class of 2024 was a truly momentous and colourful occasion, held in our school's beautifully decorated Main Hall. We proudly watched as 215 bright students received their certificates, surrounded by beaming family members, well-wishers, dedicated teachers, and staff. The whole place was buzzing with excitement!</p>
 
-      <h3>Commencement Address</h3>
-      <p>We were honored to have distinguished alumna Dr. Michelle Rodriguez, renowned neurosurgeon and humanitarian, deliver an inspiring commencement address. She encouraged graduates to pursue their passions while finding ways to contribute to society.</p>
+  <h3>Words of Wisdom from Our Guest of Honour</h3>
+  <p>We were deeply honoured to have the esteemed Nana Adwoa Oforiwaa, a renowned educationist and community leader (and a proud product of Apam!), deliver a powerful and inspiring address. She charged our graduates to follow their dreams with determination, and to always remember to give back and uplift their communities, reminding them that "to whom much is given, much is expected."</p>
 
-      <h3>Student Achievements</h3>
-      <p>This graduating class earned over $3.2 million in scholarships collectively. 85% of graduates will be continuing their education at colleges and universities, 10% will be entering vocational training programs, and 5% will be joining the workforce or military.</p>
+  <h3>Our Graduates' Bright Futures</h3>
+  <p>This exceptional class has made us incredibly proud, with many securing admissions and scholarships to various tertiary institutions across the country and beyond – places like Legon, Tech, and UCC are waiting for them! A good number are also set to embark on valuable skills training programmes, while others are ready to step into the world of work or national service, all poised to make a difference.</p>
 
-      <h3>Special Recognitions</h3>
-      <p>Valedictorian James Wilson delivered a moving speech reflecting on the class's journey. Salutatorian Aisha Patel led the graduates in the turning of the tassel ceremony. The Principal's Award for Outstanding Character was presented to Carlos Mendez for his exceptional community service work.</p>
+  <h3>Special Honours and Recognitions</h3>
+  <p>The title of Best Graduating Student (Valedictorian) went to the brilliant Kofi Mensah, who delivered a heartfelt speech reflecting on their shared journey and thanking the teachers and parents for their unwavering support. The Second Best Graduating Student (Salutatorian), Abena Konadu, gracefully led the graduates in a symbolic acknowledgment of their transition. The Headmaster's Award for Exemplary Character and Service was proudly presented to Samuel Okoampa for his outstanding contributions to school life and his peer group.</p>
 
-      <h3>Musical Performances</h3>
-      <p>The ceremony featured performances by the school choir, including their rendition of "Time of Your Life" and an original song composed by graduating senior Lisa Chen.</p>
+  <h3>Uplifting Musical Interludes</h3>
+  <p>The atmosphere was further uplifted by soulful performances from our wonderful school choir. They treated us to a medley of inspiring songs and gospel tunes that had everyone clapping along, including a beautiful original piece on 'Perseverance' composed by graduating student, Esi Fynn.</p>
 
-      <p>The ceremony concluded with the traditional hat toss, symbolizing the end of one chapter and the beginning of new adventures for our graduates.</p>
-    `,
-      images: [
-        "/images/events/greater-grace-graduation-2024-1.jpeg",
-        "/images/events/greater-grace-graduation-2024-4.jpeg",
-        "/images/events/greater-grace-graduation-2024-6.jpeg",
-        "/images/events/greater-grace-graduation-2024-12.jpeg",
-        "/images/events/greater-grace-graduation-2024-2.jpeg",
-        "/images/events/greater-grace-graduation-2024-3.jpeg",
-      ],
-      videoId: "ZIpj3Yf5RZU",
-    },
+  <p>The ceremony reached its joyful peak with the customary tossing of graduation hats high into the air – a vibrant symbol of a chapter closed and exciting new journeys beginning for our cherished graduates. We wish them Godspeed and every success in their future endeavours!</p>
+`,
+  "images": [
+    "/images/events/greater-grace-graduation-2024-1.jpeg",
+    "/images/events/greater-grace-graduation-2024-4.jpeg",
+    "/images/events/greater-grace-graduation-2024-6.jpeg",
+    "/images/events/greater-grace-graduation-2024-12.jpeg",
+    "/images/events/greater-grace-graduation-2024-2.jpeg",
+    "/images/events/greater-grace-graduation-2024-3.jpeg"
+  ],
+  "videoId": "ZIpj3Yf5RZU"
+}
     {
       id: 5,
       title: "National Science Quiz Victory",

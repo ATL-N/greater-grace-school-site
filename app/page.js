@@ -5,10 +5,29 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Book, Users, Trophy, Calendar } from "lucide-react";
+import AnniversaryBanner from "./webcomponents/AnniversaryBanner";
+
+const Confetti = () => {
+  useEffect(() => {
+    const container = document.getElementById("confetti-container");
+    if (container) {
+      for (let i = 0; i < 10; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.animationDelay = `${Math.random() * 10}s`;
+        container.appendChild(confetti);
+      }
+    }
+  }, []);
+
+  return <div id="confetti-container" className="confetti-container"></div>;
+};
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <Confetti />
       {/* <Navbar /> */}
 
       {/* Hero Section */}
@@ -17,7 +36,10 @@ export default function Home() {
           <div className="text-center animated-element">
             <h1
               className="text-4xl sm:text-6xl font-bold mb-6"
-              style={{ color: "var(--primary-color)" }}
+              style={{
+                color: "var(--primary-color)",
+                animation: "color-change 3s infinite",
+              }}
             >
               Welcome to Greater Grace Christian Academy, Apam
             </h1>
@@ -35,6 +57,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <AnniversaryBanner />
 
       {/* Features Section */}
       <section
@@ -103,6 +127,36 @@ export default function Home() {
             Latest News
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              className="rounded-lg overflow-hidden hover-scale animated-element"
+              style={{ backgroundColor: "var(--accent-color)" }}
+            >
+              <div className="relative w-full h-48">
+                <Image
+                  src="/images/anniversary/flyer.jpg"
+                  alt="15th Anniversary"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                  priority={true}
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">
+                  15th Anniversary Celebration
+                </h3>
+                <p className="mb-4">
+                  Join us for a week-long event commemorating fifteen years of academic excellence and looking forward to the years ahead.
+                </p>
+                <Link
+                  href={`/webpages/gallery/events/8`}
+                  className="inline-flex items-center"
+                  style={{ color: "var(--primary-color)" }}
+                >
+                  Read More <ArrowRight className="ml-2" size={16} />
+                </Link>
+              </div>
+            </div>
             <div
               className="rounded-lg overflow-hidden hover-scale animated-element"
               style={{ backgroundColor: "var(--accent-color)" }}

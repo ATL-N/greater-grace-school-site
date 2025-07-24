@@ -5,6 +5,13 @@ import Link from "next/link";
 // Event data structure
 const schoolEvents = [
   {
+    id: 8,
+    title: "15th Anniversary Celebration",
+    description: "A week-long event commemorating fifteen years of academic excellence and looking forward to the years ahead.",
+    date: "July 21st - 25th, 2025",
+    image: "/images/anniversary/flyer.jpg",
+  },
+  {
     id: 1, // Kept the original ID, but updated content
     title: "Music Practice Class", // Changed title
     description:

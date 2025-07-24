@@ -101,12 +101,12 @@ const getEventById = (id) => {
       videoId: "ghi789rst",
     },
     {
-  "id": 4,
-  "title": "Grand Graduation Day 2024!",
-  "description":
-    "A joyful and colourful celebration of our graduating Class of 2024 as they step boldly into their future, by God's grace.",
-  "date": "May 28, 2024",
-  "fullContent": `
+      id: 4,
+      title: "Grand Graduation Day 2024!",
+      description:
+        "A joyful and colourful celebration of our graduating Class of 2024 as they step boldly into their future, by God's grace.",
+      date: "May 28, 2024",
+      fullContent: `
   <p>The Graduation Ceremony for our esteemed Class of 2024 was a truly momentous and colourful occasion, held in our school's beautifully decorated Main Hall. We proudly watched as 215 bright students received their certificates, surrounded by beaming family members, well-wishers, dedicated teachers, and staff. The whole place was buzzing with excitement!</p>
 
   <h3>Words of Wisdom from Our Guest of Honour</h3>
@@ -123,16 +123,16 @@ const getEventById = (id) => {
 
   <p>The ceremony reached its joyful peak with the customary tossing of graduation hats high into the air – a vibrant symbol of a chapter closed and exciting new journeys beginning for our cherished graduates. We wish them Godspeed and every success in their future endeavours!</p>
 `,
-  "images": [
-    "/images/events/greater-grace-graduation-2024-1.jpeg",
-    "/images/events/greater-grace-graduation-2024-4.jpeg",
-    "/images/events/greater-grace-graduation-2024-6.jpeg",
-    "/images/events/greater-grace-graduation-2024-12.jpeg",
-    "/images/events/greater-grace-graduation-2024-2.jpeg",
-    "/images/events/greater-grace-graduation-2024-3.jpeg"
-  ],
-  "videoId": "ZIpj3Yf5RZU"
-},
+      images: [
+        "/images/events/greater-grace-graduation-2024-1.jpeg",
+        "/images/events/greater-grace-graduation-2024-4.jpeg",
+        "/images/events/greater-grace-graduation-2024-6.jpeg",
+        "/images/events/greater-grace-graduation-2024-12.jpeg",
+        "/images/events/greater-grace-graduation-2024-2.jpeg",
+        "/images/events/greater-grace-graduation-2024-3.jpeg",
+      ],
+      videoId: "ZIpj3Yf5RZU",
+    },
     {
       id: 5,
       title: "National Science Quiz Victory",
@@ -221,6 +221,54 @@ const getEventById = (id) => {
         "/images/events/dance-competition-3.jpg",
       ],
       videoId: "abc123def",
+    },
+    {
+      id: 8,
+      title: "Greater Grace Christian Academy Celebrates 15th Anniversary",
+      description:
+        "A week-long event commemorating fifteen years of academic excellence and looking forward to the years ahead.",
+      date: "July 21st - 25th, 2025",
+      fullContent: `
+        <p>Greater Grace Christian Academy is thrilled to announce its 15th Anniversary Celebration, a week-long event commemorating fifteen years of academic excellence and looking forward to the years ahead.</p>
+        <h3>Theme:</h3>
+        <p>Fifteen Years of Academic Excellence, The Responsibilities of Stakeholders for the Years Ahead.</p>
+        <h3>Date:</h3>
+        <p>July 21st - 25th, 2025</p>
+        <h3>Join us for a series of exciting activities to mark this significant milestone:</h3>
+        <ul>
+          <li><strong>Monday, 21st July, 2025:</strong> Inter-Sectional Quiz Competition & Hospital Visitation</li>
+          <li><strong>Tuesday, 22nd July, 2025:</strong> Float Through the Town (Morning)</li>
+          <li><strong>Wednesday, 23rd July, 2025:</strong> Funfair & Fun Games / Intersection Games</li>
+          <li><strong>Thursday, 24th July, 2025:</strong> Gospel Rock Show (Morning) & Awards Night</li>
+        </ul>
+        <p>The celebration will culminate in a <strong>Grand Durbar & Graduation Ceremony on Friday, 25th July, 2025</strong>, starting at <strong>9:00 AM prompt</strong> on the forecourt of the school premises.</p>
+        <h3>We are honored to have a distinguished list of guests joining us for this special occasion:</h3>
+        <h4>Special Guest of Honour & Chairman:</h4>
+        <p>Hon. Richard Gyan Mensah (MP for Gomoa West District, Dep. Min. of Energy & Green Transition)</p>
+        <h4>Guest of Honour & Guest Speaker:</h4>
+        <p>Hon. Mohammed Alhaji Kassim (District Chief Executive, Gomoa West District)</p>
+        <h4>Guests of Honour:</h4>
+        <ul>
+          <li>Nana Dr. Kwasafo Mensah III (Omankrado of Apam)</li>
+          <li>Nana Duku Ewusi X (Omankrado of Gomoa Adzintem)</li>
+          <li>Mr. Frank Kow Etrue-Hayford (District Director of Education, Gomoa West District)</li>
+          <li>Prof. David Ato Quansah (Director of TBHEC, KNUST, The Brew-Hammond Energy Center)</li>
+        </ul>
+        <h4>The event will be hosted by:</h4>
+        <p>Mr. Alfred Acquah & Mrs. Inocentia Acquah.</p>
+        <p>Come and celebrate with us as we reflect on our past achievements and look forward to a future of continued humility and hard work.</p>
+      `,
+      images: [
+        "/images/anniversary/flyer.jpg",
+        "/images/anniversary/photoshoot1.jpg",
+        "/images/anniversary/photoshoot2.jpg",
+        "/images/anniversary/photoshoot3.jpg",
+        "/images/anniversary/photoshoot4.jpg",
+        "/images/anniversary/photoshoot5.jpg",
+        "/images/anniversary/photoshoot6.jpg",
+        "/images/anniversary/photoshoot7.jpg",
+      ],
+      videoId: "TpNZPljPLgs",
     },
   ];
   return events.find((event) => event.id === parseInt(id));

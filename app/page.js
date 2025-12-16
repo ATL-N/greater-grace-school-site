@@ -1,30 +1,28 @@
-"use client";
-
-import { useEffect } from "react";
-// import Navbar from "./webcomponents/Navbar";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Book, Users, Trophy, Calendar } from "lucide-react";
 import AnniversaryBanner from "./webcomponents/AnniversaryBanner";
+import Confetti from "./webcomponents/Confetti"; // Import the new client component
+import prisma from "@/lib/db";
 
-const Confetti = () => {
-  useEffect(() => {
-    const container = document.getElementById("confetti-container");
-    if (container) {
-      for (let i = 0; i < 10; i++) {
-        const confetti = document.createElement("div");
-        confetti.className = "confetti";
-        confetti.style.left = `${Math.random() * 100}vw`;
-        confetti.style.animationDelay = `${Math.random() * 10}s`;
-        container.appendChild(confetti);
-      }
-    }
-  }, []);
+async function getLatestStories() {
+  const stories = await prisma.story.findMany({
+    orderBy: {
+      date: 'desc',
+    },
+    take: 3,
+    include: {
+      images: {
+        take: 1, // We only need the first image for the preview
+      },
+    },
+  });
+  return stories;
+}
 
-  return <div id="confetti-container" className="confetti-container"></div>;
-};
+export default async function Home() {
+  const latestStories = await getLatestStories();
 
-export default function Home() {
   return (
     <main className="min-h-screen">
       <Confetti />
@@ -127,138 +125,39 @@ export default function Home() {
             Latest News
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div
-              className="rounded-lg overflow-hidden hover-scale animated-element"
-              style={{ backgroundColor: "var(--accent-color)" }}
-            >
-              <div className="relative w-full h-48">
-                <Image
-                  src="/images/anniversary/flyer.jpg"
-                  alt="15th Anniversary"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                  priority={true}
-                />
+            {latestStories.map((story) => (
+               <div
+                key={story.id}
+                className="rounded-lg overflow-hidden hover-scale animated-element"
+                style={{ backgroundColor: "var(--accent-color)" }}
+              >
+                <div className="relative w-full h-48">
+                  <Image
+                    src={story.images[0]?.url || "/images/placeholder.jpg"} // Use placeholder if no image
+                    alt={story.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover"
+                    priority={true}
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">
+                    {story.title}
+                  </h3>
+                  <p className="mb-4 line-clamp-3">
+                    {story.description}
+                  </p>
+                  <Link
+                    href={`/webpages/gallery/events/${story.id}`}
+                    className="inline-flex items-center"
+                    style={{ color: "var(--primary-color)" }}
+                  >
+                    Read More <ArrowRight className="ml-2" size={16} />
+                  </Link>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">
-                  15th Anniversary Celebration
-                </h3>
-                <p className="mb-4">
-                  Join us for a week-long event commemorating fifteen years of academic excellence and looking forward to the years ahead.
-                </p>
-                <Link
-                  href={`/webpages/gallery/events/8`}
-                  className="inline-flex items-center"
-                  style={{ color: "var(--primary-color)" }}
-                >
-                  Read More <ArrowRight className="ml-2" size={16} />
-                </Link>
-              </div>
-            </div>
-            <div
-              className="rounded-lg overflow-hidden hover-scale animated-element"
-              style={{ backgroundColor: "var(--accent-color)" }}
-            >
-              <div className="relative w-full h-48">
-                <Image
-                  src="/images/events/ggca science fair 5.jpg"
-                  alt="National Science Quiz Competition"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                  priority={true}
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">
-                  National Science Quiz Victory
-                </h3>
-                <p className="mb-4">
-                  Our JHS students won the Regional Science and Mathematics Quiz
-                  Competition held in Cape Coast. The team of three students
-                  brought home the championship trophy after demonstrating
-                  exceptional knowledge in mathematics, physics, and biology,
-                  making GGCA proud.
-                </p>
-                <Link
-                  href={`/webpages/gallery/events/5`}
-                  className="inline-flex items-center"
-                  style={{ color: "var(--primary-color)" }}
-                >
-                  Read More <ArrowRight className="ml-2" size={16} />
-                </Link>
-              </div>
-            </div>
-
-            <div
-              className="rounded-lg overflow-hidden hover-scale animated-element"
-              style={{ backgroundColor: "var(--accent-color)" }}
-            >
-              <div className="relative w-full h-48">
-                <Image
-                  src="/images/events/culture5.jpeg"
-                  alt="ICT Lab Expansion"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">
-                  New ICT Lab Opens
-                </h3>
-                <p className="mb-4">
-                  Thanks to support from alumni and community partners, GGCA has
-                  opened a state-of-the-art computer laboratory with 25
-                  workstations, reliable internet connectivity, and educational
-                  software. This facility will significantly enhance our
-                  students' digital literacy skills.
-                </p>
-                <Link
-                  href={`/webpages/gallery/events/6`}
-                  className="inline-flex items-center"
-                  style={{ color: "var(--primary-color)" }}
-                >
-                  Read More <ArrowRight className="ml-2" size={16} />
-                </Link>
-              </div>
-            </div>
-
-            <div
-              className="rounded-lg overflow-hidden hover-scale animated-element"
-              style={{ backgroundColor: "var(--accent-color)" }}
-            >
-              <div className="relative w-full h-48">
-                <Image
-                  src="/images/events/culture5.jpeg"
-                  alt="Cultural Dance Competition"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">
-                  GGCA Wins Cultural Dance Competition
-                </h3>
-                <p className="mb-4">
-                  Our traditional dance troupe secured first place at the
-                  Central Region Schools Cultural Festival. Their outstanding
-                  performance of traditional Fante dances earned high praise
-                  from judges and has qualified the school to represent the
-                  region at the national level in Accra.
-                </p>
-                <Link
-                  href={`/webpages/gallery/events/7`}
-                  className="inline-flex items-center"
-                  style={{ color: "var(--primary-color)" }}
-                >
-                  Read More <ArrowRight className="ml-2" size={16} />
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

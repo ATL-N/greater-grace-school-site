@@ -253,7 +253,7 @@ export default function Events() {
 
       {/* Back to Gallery Button */}
       <section className="py-6 px-4 sm:px-6 lg:px-8 text-center mb-12">
-        <Link href="/gallery">
+        <Link href="/webpages/gallery">
           <div
             className="inline-block px-6 py-3 rounded-md font-medium hover-scale shadow-lg"
             style={{ backgroundColor: "var(--primary-color)", color: "white" }}

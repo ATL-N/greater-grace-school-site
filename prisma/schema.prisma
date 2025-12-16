@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  
+}
+
+generator client {
+  provider = "prisma-client-js"
+  engineType = "binary"
+}
+
+// User model for admin accounts
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String   // Will store a hashed password
+  name      String?
+  createdAt DateTime @default(now())
+}
+
+model Story {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  content     String
+  date        DateTime
+  category    String?
+  videoId     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  images      Image[]
+
+  @@index([date])
+}
+
+model Image {
+  id      Int     @id @default(autoincrement())
+  url     String
+  caption String?
+  story   Story   @relation(fields: [storyId], references: [id], onDelete: Cascade)
+  storyId Int
+}

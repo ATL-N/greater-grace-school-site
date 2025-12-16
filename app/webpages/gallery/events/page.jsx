@@ -1,108 +1,37 @@
-"use client";
-
 import Link from "next/link";
+import prisma from "@/lib/db";
+import Image from "next/image";
 
-// Event data structure
-const schoolEvents = [
-  {
-    id: 8,
-    title: "15th Anniversary Celebration",
-    description: "A week-long event commemorating fifteen years of academic excellence and looking forward to the years ahead.",
-    date: "July 21st - 25th, 2025",
-    image: "/images/anniversary/flyer.jpg",
-  },
-  {
-    id: 1, // Kept the original ID, but updated content
-    title: "Music Practice Class", // Changed title
-    description:
-      "Join us for our regular music practice session. All levels welcome.", // Changed description
-    date: "January 24, 2024", // Changed date (example)
-    image: "/images/events/brassband.jpeg", // Changed image (example)
-  },
-  {
-    id: 2,
-    title: "Science Fair 2024",
-    description:
-      "Students showcase their innovative science projects and experiments to the school community and guest judges.",
-    date: "February 20, 2024",
-    image: "/images/events/ggca science fair 1.jpg",
-  },
-  {
-    id: 3,
-    title: "Annual Cultural Day",
-    description:
-      "A celebration of diverse cultures through performances, exhibitions, and interactive activities.",
-    date: "December 10, 2024",
-    image: "/images/events/culture5.jpeg",
-  },
-  {
-    id: 4,
-    title: "Graduation Ceremony 2024",
-    description:
-      "Celebrating the achievements of our graduating class as they prepare for their next chapter.",
-    date: "May 28, 2024",
-    image: "/images/events/greater-grace-graduation-2024-1.jpeg",
-  },
-  // {
-  //   id: 5,
-  //   title: "Annual Sports Day 2024",
-  //   description:
-  //     "Our annual interschool sports competition featuring track events, team sports, and individual challenges.",
-  //   date: "March 15, 2024",
-  //   image: "/images/events/sports-day-1.jpg",
-  // },
-  // {
-  //   id: 6,
-  //   title: "Science Fair 2025",
-  //   description:
-  //     "Students showcase their innovative science projects and experiments to the school community and guest judges.",
-  //   date: "February 20, 2024",
-  //   image: "/images/events/science-fair-1.jpg",
-  // },
-  // {
-  //   id: 7,
-  //   title: "Annual Cultural Day",
-  //   description:
-  //     "A celebration of diverse cultures through performances, exhibitions, and interactive activities.",
-  //   date: "December 10, 2023",
-  //   image: "/images/events/cultural-day-1.jpg",
-  // },
-  // {
-  //   id: 8,
-  //   title: "Graduation Ceremony 2024",
-  //   description:
-  //     "Celebrating the achievements of our graduating class as they prepare for their next chapter.",
-  //   date: "May 28, 2024",
-  //   image: "/images/events/graduation-1.jpg",
-  // },
-];
-
-// Event Card Component
+// Event Card Component - adapted for the new data structure
 const EventCard = ({ event }) => {
+  const imageUrl = event.images?.[0]?.url || "/images/placeholder.jpg";
+  
   return (
     <Link href={`/webpages/gallery/events/${event.id}`}>
       <div
-        className="rounded-lg overflow-hidden shadow-xl hover-scale cursor-pointer animated-element h-full"
+        className="rounded-lg overflow-hidden shadow-xl hover-scale cursor-pointer animated-element h-full flex flex-col"
         style={{ backgroundColor: "var(--background-color)" }}
       >
-        <div className="h-48 overflow-hidden">
-          <img
-            src={event.image}
+        <div className="relative w-full h-48 overflow-hidden">
+          <Image
+            src={imageUrl}
             alt={event.title}
-            className="w-full h-full object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover"
           />
         </div>
-        <div className="p-4">
+        <div className="p-4 flex flex-col flex-grow">
           <h3
             className="text-xl font-bold"
             style={{ color: "var(--primary-color)" }}
           >
             {event.title}
           </h3>
-          <p className="text-sm mt-1 mb-2">{event.date}</p>
-          <p className="text-sm">{event.description}</p>
+          <p className="text-sm mt-1 mb-2 text-gray-600">{new Date(event.date).toLocaleDateString()}</p>
+          <p className="text-sm flex-grow">{event.description}</p>
           <div
-            className="mt-4 inline-block px-4 py-2 rounded text-sm font-medium"
+            className="mt-4 inline-block px-4 py-2 rounded text-sm font-medium self-start"
             style={{
               backgroundColor: "var(--primary-color)",
               color: "white",
@@ -116,7 +45,18 @@ const EventCard = ({ event }) => {
   );
 };
 
-export default function Events() {
+export default async function Events() {
+  const stories = await prisma.story.findMany({
+    orderBy: {
+      date: 'desc',
+    },
+    include: {
+      images: {
+        take: 1,
+      },
+    },
+  });
+
   return (
     <main className="min-h-screen">
       {/* Navigation Breadcrumb */}
@@ -163,17 +103,25 @@ export default function Events() {
       {/* Event Listing */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 mb-16">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {schoolEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
-          </div>
+          {stories.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {stories.map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-20">
+              <p className="text-lg text-gray-500">
+                No events have been posted yet. Please check back soon!
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
       {/* Back to Gallery Button */}
       <section className="py-6 px-4 sm:px-6 lg:px-8 text-center mb-12">
-        <Link href="/gallery">
+        <Link href="/webpages/gallery">
           <div
             className="inline-block px-6 py-3 rounded-md font-medium hover-scale shadow-lg"
             style={{ backgroundColor: "var(--primary-color)", color: "white" }}

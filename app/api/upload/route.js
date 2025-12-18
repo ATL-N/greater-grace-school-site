@@ -5,21 +5,21 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { randomUUID } from 'crypto';
 import { sanitizeFilename } from '@/lib/utils';
 
-// This is the robust configuration from your working example
-const s3Client = new S3Client({
-  region: process.env.B2_ENDPOINT.split('.')[1], // e.g., us-west-004
-  endpoint: `https://${process.env.B2_ENDPOINT}`,
-  credentials: {
-    accessKeyId: process.env.B2_APPLICATION_KEY_ID,
-    secretAccessKey: process.env.B2_APPLICATION_KEY,
-  },
-});
-
 export async function POST(request) {
   const session = await getServerSession(authOptions);
   if (!session) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
+
+  // Initialize S3 client inside the handler
+  const s3Client = new S3Client({
+    region: process.env.B2_ENDPOINT.split('.')[1], // e.g., us-west-004
+    endpoint: `https://${process.env.B2_ENDPOINT}`,
+    credentials: {
+      accessKeyId: process.env.B2_APPLICATION_KEY_ID,
+      secretAccessKey: process.env.B2_APPLICATION_KEY,
+    },
+  });
 
   try {
     const formData = await request.formData();

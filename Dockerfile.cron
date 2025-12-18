@@ -1,9 +1,9 @@
 # Use a specific version of Node.js for stability
 FROM node:20-alpine
 
-# Install dumb-init and cron
+# Install dumb-init and dcron
 RUN apk update && \
-    apk add --no-cache dumb-init cron && \
+    apk add --no-cache dumb-init dcron && \
     rm -rf /var/cache/apk/*
 
 WORKDIR /app

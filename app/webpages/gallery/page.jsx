@@ -2,6 +2,8 @@ import Link from "next/link";
 import prisma from "@/lib/db";
 import Image from "next/image";
 
+export const dynamic = 'force-dynamic'; // Force dynamic rendering
+
 async function getFeaturedStories() {
   const stories = await prisma.story.findMany({
     orderBy: {

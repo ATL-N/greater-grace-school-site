@@ -25,7 +25,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen">
-      <Confetti />
+      {/* <Confetti /> */}
       {/* <Navbar /> */}
 
       {/* Hero Section */}

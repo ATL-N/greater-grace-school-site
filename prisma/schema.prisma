@@ -21,7 +21,7 @@ model User {
 }
 
 model Story {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(uuid())
   title       String
   description String
   content     String
@@ -40,5 +40,5 @@ model Image {
   url     String
   caption String?
   story   Story   @relation(fields: [storyId], references: [id], onDelete: Cascade)
-  storyId Int
+  storyId String
 }

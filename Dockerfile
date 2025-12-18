@@ -1,32 +1,78 @@
+# Build stage
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
+# Install build dependencies
+RUN apk update && \
+    apk add --no-cache postgresql-client curl && \
+    rm -rf /var/cache/apk/*
+
+# Copy package files
 COPY package*.json ./
-RUN npm ci
+
+# Install ALL dependencies (not just production)
+RUN npm ci && \
+    npm cache clean --force
+
+# Copy source code
 COPY . .
+
+# Generate Prisma client
+RUN npx prisma generate
+
+# Build the Next.js application
 RUN npm run build
 
+# Production image
 FROM node:20-alpine AS runner
 
 WORKDIR /app
-ENV NODE_ENV='production'
 
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+# Install runtime dependencies
 RUN apk update && \
-    apk add --no-cache postgresql-client curl
+    apk add --no-cache postgresql-client curl dumb-init && \
+    rm -rf /var/cache/apk/*
 
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/next.config.js ./
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
+# Copy package files for runtime dependencies
+COPY package*.json ./
 
-# Add this line to copy static files
+# Install production dependencies (needed for Prisma and socket server)
+RUN npm ci --only=production && \
+    npm cache clean --force
+
+# Copy Prisma files
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
+
+# CRITICAL: Copy standalone server files
+COPY --from=builder /app/.next/standalone ./
+
+# CRITICAL: Copy static files into the standalone directory structure
+# Next.js standalone expects static files in .next/static
 COPY --from=builder /app/.next/static ./.next/static
 
-EXPOSE 3007
+# CRITICAL: Copy public folder
+# Public files need to be in the root public directory
+COPY --from=builder /app/public ./public
 
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:3007/api/health || exit 1
+# Copy entrypoint
+COPY entrypoint.sh ./entrypoint.sh
 
-CMD ["npm", "start"]
+# Make entrypoint executable
+RUN chmod +x ./entrypoint.sh
+
+# Expose ports
+EXPOSE 3000
+EXPOSE 8080
+
+# Use dumb-init
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
+# Run the application
+CMD ["./entrypoint.sh"]

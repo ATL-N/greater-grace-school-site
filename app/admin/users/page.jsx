@@ -48,19 +48,19 @@ export default function UsersDashboard() {
       {!loading && !error && (
         <div className="overflow-x-auto">
           <table className="min-w-full">
-            <thead className="border-b">
+            <thead className="border-b" style={{ borderColor: "var(--accent-color)"}}>
               <tr>
-                <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Name</th>
-                <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Email</th>
-                <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">Date Joined</th>
+                <th scope="col" className="text-sm font-medium px-6 py-4 text-left" style={{ color: "var(--text-color)" }}>Name</th>
+                <th scope="col" className="text-sm font-medium px-6 py-4 text-left" style={{ color: "var(--text-color)" }}>Email</th>
+                <th scope="col" className="text-sm font-medium px-6 py-4 text-left" style={{ color: "var(--text-color)" }}>Date Joined</th>
               </tr>
             </thead>
             <tbody>
               {users.map((user) => (
-                <tr key={user.id} className="border-b hover:bg-gray-100">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{user.name}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{user.email}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{new Date(user.createdAt).toLocaleDateString()}</td>
+                <tr key={user.id} className="border-b hover:bg-gray-100" style={{ borderColor: "var(--accent-color)"}}>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium" style={{ color: "var(--text-color)" }}>{user.name}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm" style={{ color: "var(--text-color)" }}>{user.email}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm" style={{ color: "var(--text-color)" }}>{new Date(user.createdAt).toLocaleDateString()}</td>
                 </tr>
               ))}
             </tbody>

@@ -1,10 +1,24 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
+import prisma from "@/lib/db";
+import Image from "next/image";
 
-export default function Gallery() {
-  const [activeTab, setActiveTab] = useState("facilities");
+async function getFeaturedStories() {
+  const stories = await prisma.story.findMany({
+    orderBy: {
+      date: 'desc',
+    },
+    take: 3,
+    include: {
+      images: {
+        take: 1,
+      },
+    },
+  });
+  return stories;
+}
+
+export default async function Gallery() {
+  const featuredStories = await getFeaturedStories();
 
   return (
     <main className="min-h-screen">
@@ -32,14 +46,9 @@ export default function Gallery() {
               <div
                 className="px-8 py-4 rounded-lg text-center font-semibold text-lg hover-scale transition-all duration-300 shadow-lg"
                 style={{
-                  backgroundColor:
-                    activeTab === "facilities"
-                      ? "var(--primary-color)"
-                      : "var(--accent-color)",
-                  color:
-                    activeTab === "facilities" ? "white" : "var(--text-color)",
+                  backgroundColor: "var(--accent-color)",
+                  color: "var(--text-color)",
                 }}
-                onClick={() => setActiveTab("facilities")}
               >
                 Campus Facilities
               </div>
@@ -48,13 +57,9 @@ export default function Gallery() {
               <div
                 className="px-8 py-4 rounded-lg text-center font-semibold text-lg hover-scale transition-all duration-300 shadow-lg"
                 style={{
-                  backgroundColor:
-                    activeTab === "events"
-                      ? "var(--primary-color)"
-                      : "var(--accent-color)",
-                  color: activeTab === "events" ? "white" : "var(--text-color)",
+                  backgroundColor: "var(--primary-color)",
+                  color: "white",
                 }}
-                onClick={() => setActiveTab("events")}
               >
                 School Events
               </div>
@@ -137,49 +142,30 @@ export default function Gallery() {
         style={{ backgroundColor: "var(--accent-color)" }}
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">
+          <h2 className="text-3xl font-bold mb-8 text-center" style={{ color: "var(--primary-color)" }}>
             Featured Highlights
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <div className="rounded-lg overflow-hidden shadow-xl hover-scale">
-              <img
-                src="/images/events/graduation20241.jpeg"
-                alt="GGCA Graduation Ceremony 2024"
-                className="w-full h-64 object-cover"
-              />
-              <div
-                className="p-4"
-                style={{ backgroundColor: "var(--background-color)" }}
-              >
-                <p className="font-medium">Graduation Ceremony 2024</p>
-              </div>
-            </div>
-            <div className="rounded-lg overflow-hidden shadow-xl hover-scale">
-              <img
-                src="/images/events/culture8.jpeg"
-                alt="Annual Cultural Day"
-                className="w-full h-64 object-cover"
-              />
-              <div
-                className="p-4"
-                style={{ backgroundColor: "var(--background-color)" }}
-              >
-                <p className="font-medium">Annual Culture Day Celebration</p>
-              </div>
-            </div>
-            <div className="rounded-lg overflow-hidden shadow-xl hover-scale">
-              <img
-                src="/images/facilities/classroom 30.jpg"
-                alt="GGCA State-of-the-art computer lab"
-                className="w-full h-64 object-cover"
-              />
-              <div
-                className="p-4"
-                style={{ backgroundColor: "var(--background-color)" }}
-              >
-                <p className="font-medium">State-of-the-art Computer lab</p>
-              </div>
-            </div>
+            {featuredStories.map((story) => (
+              <Link key={story.id} href={`/webpages/gallery/events/${story.id}`}>
+                <div className="rounded-lg overflow-hidden shadow-xl hover-scale h-full">
+                  <div className="relative w-full h-64">
+                    <Image
+                      src={story.images?.[0]?.url || "/images/placeholder.jpg"}
+                      alt={story.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div
+                    className="p-4"
+                    style={{ backgroundColor: "var(--background-color)" }}
+                  >
+                    <p className="font-medium" style={{ color: "var(--text-color)" }}>{story.title}</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

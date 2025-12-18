@@ -1,14 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import ReactPlayer from "react-player/youtube";
-import { Calendar, Share2, ArrowLeft } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Image from "next/image";
+import { Calendar } from "lucide-react";
 
-// YouTube Embed Component
 const YouTubeEmbed = ({ videoId }) => {
   if (!videoId) return null;
   return (
@@ -20,28 +18,14 @@ const YouTubeEmbed = ({ videoId }) => {
           width="100%"
           height="100%"
           controls={true}
-          light={true} // Use light mode to show a thumbnail
+          light={true}
           pip={true}
           config={{
-            youtube: {
-              playerVars: { modestbranding: 1, rel: 0 },
-            },
+            youtube: { playerVars: { modestbranding: 1, rel: 0 } },
           }}
         />
       </div>
     </div>
-  );
-};
-
-// Social Media Share Button Component
-const SocialButton = ({ icon }) => {
-  return (
-    <button
-      className="p-3 rounded-full transition-transform duration-300 hover:scale-110"
-      style={{ backgroundColor: "var(--accent-color)" }}
-    >
-      {icon}
-    </button>
   );
 };
 
@@ -54,7 +38,6 @@ export default function StoryDetailClient({ story }) {
 
   return (
     <>
-      {/* Hero Section */}
       <div className="relative h-72 w-full">
         <div className="absolute inset-0">
           <Image
@@ -66,10 +49,6 @@ export default function StoryDetailClient({ story }) {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-70"></div>
-        
-        {/* Breadcrumbs are now in the server component */}
-
-        {/* Hero Content */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-end pb-12 z-10">
           <div className="animated-element">
             <h1 className="text-5xl font-bold text-white mb-4">{story.title}</h1>
@@ -82,16 +61,12 @@ export default function StoryDetailClient({ story }) {
         </div>
       </div>
 
-      {/* Main Content Area */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2">
         <div className="rounded-xl p-6 lg:p-10 mb-16 shadow-2xl" style={{ backgroundColor: "var(--background-color)", color: "var(--text-color)" }}>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Main Content Column */}
             <div className="lg:col-span-2">
               <article className="prose prose-lg max-w-none mt-8" style={{ color: "var(--text-color)" }} dangerouslySetInnerHTML={{ __html: story.content }}></article>
             </div>
-
-            {/* Sidebar Column */}
             <div className="lg:col-span-1 mt-10">
               <div className="sticky top-8 space-y-10">
                 {story.videoId && (
@@ -100,14 +75,12 @@ export default function StoryDetailClient({ story }) {
                     <YouTubeEmbed videoId={story.videoId} />
                   </div>
                 )}
-                {/* Share Section can be added back if needed */}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Photo Gallery */}
       {story.images && story.images.length > 0 && (
         <section className="py-16 px-4 sm:px-6 lg:px-8 mb-16" style={{ backgroundColor: "var(--accent-color)" }}>
           <div className="max-w-7xl mx-auto">

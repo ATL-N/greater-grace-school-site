@@ -19,9 +19,15 @@ const storySchema = z.object({
 
 // GET a single story by ID (public)
 export async function GET(request, { params }) {
+  const awaitedParams = await params;
+  const id = parseInt(awaitedParams.id, 10);
+  if (isNaN(id)) {
+    return NextResponse.json({ message: 'Invalid ID' }, { status: 400 });
+  }
+
   try {
     const story = await prisma.story.findUnique({
-      where: { id: parseInt(params.id) },
+      where: { id: id },
       include: { images: true },
     });
 
@@ -31,7 +37,7 @@ export async function GET(request, { params }) {
 
     return NextResponse.json(story);
   } catch (error) {
-    console.error(`GET STORY (ID: ${params.id}) ERROR:`, error);
+    console.error(`GET STORY (ID: ${id}) ERROR:`, error);
     return NextResponse.json(
       { message: 'An error occurred while fetching the story.' },
       { status: 500 }
@@ -44,6 +50,12 @@ export async function PUT(request, { params }) {
   const session = await getServerSession(authOptions);
   if (!session) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+  }
+
+  const awaitedParams = await params;
+  const id = parseInt(awaitedParams.id, 10);
+  if (isNaN(id)) {
+    return NextResponse.json({ message: 'Invalid ID' }, { status: 400 });
   }
 
   try {
@@ -63,12 +75,12 @@ export async function PUT(request, { params }) {
     const updatedStory = await prisma.$transaction(async (tx) => {
       // 1. Delete existing images for the story
       await tx.image.deleteMany({
-        where: { storyId: parseInt(params.id) },
+        where: { storyId: id },
       });
 
       // 2. Update the story and create the new images
       const story = await tx.story.update({
-        where: { id: parseInt(params.id) },
+        where: { id: id },
         data: {
           title,
           description,
@@ -87,10 +99,9 @@ export async function PUT(request, { params }) {
       return story;
     });
 
-
     return NextResponse.json(updatedStory);
   } catch (error) {
-    console.error(`UPDATE STORY (ID: ${params.id}) ERROR:`, error);
+    console.error(`UPDATE STORY (ID: ${id}) ERROR:`, error);
     return NextResponse.json(
       { message: 'An error occurred while updating the story.' },
       { status: 500 }
@@ -105,16 +116,21 @@ export async function DELETE(request, { params }) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
 
+  const awaitedParams = await params;
+  const id = parseInt(awaitedParams.id, 10);
+  if (isNaN(id)) {
+    return NextResponse.json({ message: 'Invalid ID' }, { status: 400 });
+  }
+
   try {
-    // The schema relation `onDelete: Cascade` should handle deleting related images,
-    // but we can also do it manually if needed. Here, we rely on the cascade.
+    // The schema relation `onDelete: Cascade` ensures related images are also deleted.
     await prisma.story.delete({
-      where: { id: parseInt(params.id) },
+      where: { id: id },
     });
 
     return new NextResponse(null, { status: 204 }); // 204 No Content
   } catch (error) {
-    console.error(`DELETE STORY (ID: ${params.id}) ERROR:`, error);
+    console.error(`DELETE STORY (ID: ${id}) ERROR:`, error);
     return NextResponse.json(
       { message: 'An error occurred while deleting the story.' },
       { status: 500 }

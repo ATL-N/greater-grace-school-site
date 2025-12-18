@@ -5,6 +5,8 @@ import AnniversaryBanner from "./webcomponents/AnniversaryBanner";
 import Confetti from "./webcomponents/Confetti"; // Import the new client component
 import prisma from "@/lib/db";
 
+export const dynamic = 'force-dynamic'; // Force dynamic rendering
+
 async function getLatestStories() {
   const stories = await prisma.story.findMany({
     orderBy: {

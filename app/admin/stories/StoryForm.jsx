@@ -8,6 +8,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useState } from 'react';
 import { Upload, X, Loader } from 'lucide-react';
+import { sanitizeFilename } from "@/lib/utils";
 
 
 // This schema is for client-side validation
@@ -83,8 +84,11 @@ export default function StoryForm({ story }) {
     
     for (const file of files) {
       try {
+        const sanitizedName = sanitizeFilename(file.name);
+        const renamedFile = new File([file], sanitizedName, { type: file.type });
+        
         const formData = new FormData();
-        formData.append("file", file);
+        formData.append("file", renamedFile);
 
         const res = await fetch('/api/upload', {
           method: 'POST',

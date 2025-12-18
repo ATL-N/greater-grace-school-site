@@ -19,9 +19,8 @@ const storySchema = z.object({
 
 // GET a single story by ID (public)
 export async function GET(request, { params }) {
-  const awaitedParams = await params;
-  const id = parseInt(awaitedParams.id, 10);
-  if (isNaN(id)) {
+  const { id } = await params;
+  if (!id) {
     return NextResponse.json({ message: 'Invalid ID' }, { status: 400 });
   }
 
@@ -52,9 +51,8 @@ export async function PUT(request, { params }) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
 
-  const awaitedParams = await params;
-  const id = parseInt(awaitedParams.id, 10);
-  if (isNaN(id)) {
+  const { id } = await params;
+  if (!id) {
     return NextResponse.json({ message: 'Invalid ID' }, { status: 400 });
   }
 
@@ -116,9 +114,8 @@ export async function DELETE(request, { params }) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
 
-  const awaitedParams = await params;
-  const id = parseInt(awaitedParams.id, 10);
-  if (isNaN(id)) {
+  const { id } = await params;
+  if (!id) {
     return NextResponse.json({ message: 'Invalid ID' }, { status: 400 });
   }
 

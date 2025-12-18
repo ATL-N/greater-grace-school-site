@@ -1,0 +1,25 @@
+# Use a specific version of Node.js for stability
+FROM node:20-alpine
+
+# Install dumb-init and cron
+RUN apk update && \
+    apk add --no-cache dumb-init cron && \
+    rm -rf /var/cache/apk/*
+
+WORKDIR /app
+
+# Copy package files and install production dependencies
+COPY package*.json ./
+RUN npm ci --only=production && \
+    npm cache clean --force
+
+# Copy required source files for the script to run
+COPY prisma ./prisma
+COPY scripts ./scripts
+
+# Copy the crontab file
+COPY crontab /etc/crontabs/root
+
+# Give execution rights on the cron job and start cron
+RUN chmod 0644 /etc/crontabs/root
+CMD ["crond", "-f", "-l", "2"]

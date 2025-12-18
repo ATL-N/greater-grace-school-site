@@ -1,0 +1,4 @@
+# Run the cleanup script at midnight every day
+0 0 * * * node /app/scripts/cleanupOrphanedImages.js >> /var/log/cron.log 2>&1
+# An empty line is required at the end of this file for a valid cron file.
+

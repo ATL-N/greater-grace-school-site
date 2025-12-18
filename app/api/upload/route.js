@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth/next';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { randomUUID } from 'crypto';
+import { sanitizeFilename } from '@/lib/utils';
 
 // This is the robust configuration from your working example
 const s3Client = new S3Client({
@@ -31,7 +32,7 @@ export async function POST(request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const uniqueFilename = `${randomUUID()}-${file.name.replace(/\s/g, '_')}`;
+    const uniqueFilename = `${randomUUID()}-${sanitizeFilename(file.name)}`;
 
     const command = new PutObjectCommand({
       Bucket: process.env.B2_BUCKET_NAME,

@@ -99,6 +99,24 @@ services:
     volumes:
       - redis-data:/data
     command: redis-server --requirepass ${REDIS_PASSWORD:-changeme}
+  
+  cron-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.cron
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+    depends_on:
+      ggca-app:
+        condition: service_healthy
+    restart: always
+    networks:
+      - traefik-public
 
 volumes:
   postgres-data-ggca:

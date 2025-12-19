@@ -9,16 +9,16 @@ services:
     env_file:
      - .env
     environment:
-      - DATABASE_URL=postgresql://${DB_USER:-postgres}:${DB_PASSWORD}@ggca-db:5432/${DB_NAME:-postgres}
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@ggca-db:5432/${DB_NAME}
       - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
       - NEXTAUTH_URL=https://${DOMAIN}
       - AUTH_URL=https://${DOMAIN}
       - NODE_ENV=production
       - AUTH_TRUST_HOST=${AUTH_TRUST_HOST}
       - DB_HOST=ggca-db
-      - DB_USER=${DB_USER:-postgres}
+      - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME:-postgres}
+      - DB_NAME=${DB_NAME}
       - PORT=3000
     deploy:
       resources:
@@ -54,17 +54,16 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-      start_period: 60s
+      start_period: 120s
 
   ggca-db:
     image: postgres:15-alpine
     environment:
-      - POSTGRES_USER=${DB_USER:-postgres}
+      - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME:-postgres}
+      - POSTGRES_DB=${DB_NAME}
     volumes:
       - postgres-data-ggca:/var/lib/postgresql/data
-      # - ./backups:/app/backups # Uncomment if you want database backups
     deploy:
       resources:
         limits:
@@ -72,12 +71,15 @@ services:
         reservations:
           memory: 256M
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-postgres}" ]
-      interval: 5s
+      # FIXED: Use the actual DB_USER and DB_NAME from your .env
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}" ]
+      interval: 3s
       timeout: 5s
-      retries: 5
+      retries: 10
+      start_period: 10s
     networks:
       - traefik-public
+    restart: always
     command:
       - "postgres"
       - "-c"

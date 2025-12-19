@@ -27,7 +27,7 @@ function LoginPageContent() {
         password,
       });
 
-      if (res.error) {
+      if (!res.ok) {
         setError("Invalid email or password. Please try again.");
         setLoading(false);
       } else {

@@ -4,9 +4,9 @@ import bcrypt from 'bcryptjs';
 
 export async function GET(request) {
   // IMPORTANT: Protect this route from being run in production
-  // if (process.env.NODE_ENV === 'production') {
-  //   return NextResponse.json({ message: 'Seeding is disabled in production.' }, { status: 403 });
-  // }
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.json({ message: 'Seeding is disabled in production.' }, { status: 403 });
+  }
 
   try {
     const hashedPassword = await bcrypt.hash('password@123', 10);

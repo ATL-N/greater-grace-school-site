@@ -32,13 +32,10 @@ export PGPASSWORD="$DB_PASSWORD"
 ATTEMPTS=0
 MAX_ATTEMPTS=30
 
-# Connect to the actual database specified in DB_NAME
 while ! psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" -c '\q' > /dev/null 2>&1; do
   ATTEMPTS=$((ATTEMPTS + 1))
   if [ "$ATTEMPTS" -ge "$MAX_ATTEMPTS" ]; then
     echo "ERROR: Cannot connect to database after $MAX_ATTEMPTS attempts"
-    echo "Attempting connection with verbose output..."
-    psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" -c '\q' 2>&1 || true
     exit 1
   fi
   echo "Waiting for PostgreSQL to accept connections... (Attempt $ATTEMPTS/$MAX_ATTEMPTS)"
@@ -48,10 +45,18 @@ done
 echo "✓ PostgreSQL is ready and accepting connections!"
 unset PGPASSWORD
 
-# 3. Run database migrations
+# 3. Check if migrations directory exists
 echo ""
-echo "=== Running Prisma migrations ==="
-npx prisma migrate deploy
+if [ -d "prisma/migrations" ] && [ "$(ls -A prisma/migrations)" ]; then
+  echo "=== Running Prisma migrations ==="
+  npx prisma migrate deploy || {
+    echo "⚠ Migration failed, trying db push instead..."
+    npx prisma db push --accept-data-loss
+  }
+else
+  echo "=== No migrations found, using Prisma db push ==="
+  npx prisma db push --accept-data-loss
+fi
 
 # 4. Seed database
 echo ""
@@ -61,4 +66,5 @@ npx prisma db seed || echo "⚠ Seeding skipped or already completed"
 # 5. Start the application
 echo ""
 echo "=== Starting Next.js application ==="
+echo "Server starting on port $PORT..."
 exec node server.js

@@ -5,13 +5,7 @@ import StoryDetailClient from "./StoryDetailClient";
 import { ArrowLeft } from "lucide-react";
 
 export async function generateMetadata({ params }) {
-  const awaitedParams = await params;
-  const id = parseInt(awaitedParams.id, 10);
-  if (isNaN(id)) {
-    return {
-      title: 'Not Found'
-    }
-  }
+  const { id } = await params;
 
   const story = await prisma.story.findUnique({
     where: { id: id },
@@ -30,13 +24,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function EventDetailPage({ params }) {
-  const awaitedParams = await params;
-  const id = parseInt(awaitedParams.id, 10);
-
-  // Validate that the ID is a number
-  if (isNaN(id)) {
-    notFound();
-  }
+  const { id } = await params;
 
   const story = await prisma.story.findUnique({
     where: { id: id },

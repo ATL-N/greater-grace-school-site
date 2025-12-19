@@ -3,12 +3,7 @@ import StoryForm from "../../StoryForm";
 import { notFound } from "next/navigation";
 
 export default async function EditStoryPage({ params }) {
-  const awaitedParams = await params;
-  const id = parseInt(awaitedParams.id, 10);
-
-  if (isNaN(id)) {
-    notFound();
-  }
+  const { id } = await params;
 
   const story = await prisma.story.findUnique({
     where: { id: id },

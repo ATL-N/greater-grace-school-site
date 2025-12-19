@@ -45,25 +45,12 @@ done
 echo "✓ PostgreSQL is ready and accepting connections!"
 unset PGPASSWORD
 
-# 3. Check if migrations directory exists
+# 3. Push the schema directly to the database
 echo ""
-if [ -d "prisma/migrations" ] && [ "$(ls -A prisma/migrations)" ]; then
-  echo "=== Running Prisma migrations ==="
-  npx prisma migrate deploy || {
-    echo "⚠ Migration failed, trying db push instead..."
-    npx prisma db push --accept-data-loss
-  }
-else
-  echo "=== No migrations found, using Prisma db push ==="
-  npx prisma db push --accept-data-loss
-fi
+echo "=== Pushing schema to database (starting fresh) ==="
+npx prisma db push --accept-data-loss
 
-# 4. Seed database
-echo ""
-echo "=== Seeding database ==="
-npx prisma db seed || echo "⚠ Seeding skipped or already completed"
-
-# 5. Start the application
+# 4. Start the application
 echo ""
 echo "=== Starting Next.js application ==="
 echo "Server starting on port $PORT..."

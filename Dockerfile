@@ -15,10 +15,21 @@ COPY package*.json ./
 RUN npm ci && \
     npm cache clean --force
 
-# Copy source code (but we'll generate Prisma client at runtime)
+# Copy Prisma files
+COPY prisma ./prisma
+COPY prisma.config.ts ./prisma.config.ts
+
+# Set a dummy DATABASE_URL for build time (Prisma needs this to generate the client)
+# The real DATABASE_URL will be provided at runtime via docker-compose
+ENV DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy"
+
+# Generate Prisma client
+RUN npx prisma generate
+
+# Copy rest of source code
 COPY . .
 
-# Build the Next.js application (without Prisma generate for now)
+# Build the Next.js application
 RUN npm run build
 
 # Production image
@@ -38,13 +49,15 @@ RUN apk update && \
 # Copy package files for runtime dependencies
 COPY package*.json ./
 
-# Install ALL dependencies (including dev deps for Prisma CLI)
-RUN npm ci && \
+# Install production dependencies (needed for Prisma and socket server)
+RUN npm ci --only=production && \
     npm cache clean --force
 
 # Copy Prisma files and config
-COPY prisma ./prisma
-COPY prisma.config.ts ./prisma.config.ts
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 
 # CRITICAL: Copy standalone server files
 COPY --from=builder /app/.next/standalone ./

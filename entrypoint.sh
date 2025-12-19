@@ -6,7 +6,6 @@ echo "=== Environment Variables Check ==="
 echo "DB_HOST: ${DB_HOST}"
 echo "DB_USER: ${DB_USER}"
 echo "DB_NAME: ${DB_NAME}"
-echo "DATABASE_URL: ${DATABASE_URL}"
 
 # 1. Wait for database host to be reachable
 echo ""
@@ -46,28 +45,25 @@ done
 echo "✓ PostgreSQL is ready and accepting connections!"
 unset PGPASSWORD
 
-# 3. Generate Prisma Client (now that we have DATABASE_URL)
+# 3. Check if migrations directory exists
 echo ""
-echo "=== Generating Prisma Client ==="
-npx prisma generate
-
-# 4. Run database migrations or push schema
-echo ""
-echo "=== Syncing database schema ==="
-if [ -d "prisma/migrations" ] && [ "$(ls -A prisma/migrations 2>/dev/null)" ]; then
-  echo "Migrations found, running prisma migrate deploy..."
-  npx prisma migrate deploy
+if [ -d "prisma/migrations" ] && [ "$(ls -A prisma/migrations)" ]; then
+  echo "=== Running Prisma migrations ==="
+  npx prisma migrate deploy || {
+    echo "⚠ Migration failed, trying db push instead..."
+    npx prisma db push --accept-data-loss
+  }
 else
-  echo "No migrations found, using prisma db push..."
+  echo "=== No migrations found, using Prisma db push ==="
   npx prisma db push --accept-data-loss
 fi
 
-# 5. Seed database
+# 4. Seed database
 echo ""
 echo "=== Seeding database ==="
 npx prisma db seed || echo "⚠ Seeding skipped or already completed"
 
-# 6. Start the application
+# 5. Start the application
 echo ""
 echo "=== Starting Next.js application ==="
 echo "Server starting on port $PORT..."

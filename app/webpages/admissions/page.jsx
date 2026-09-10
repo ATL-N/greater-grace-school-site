@@ -1,9 +1,47 @@
-// "use client";
-
-// import Navbar from "../../components/Navbar";
-// import Footer from "../../components/Footer";
 import ContactForm from "../../webcomponents/ContactForm";
 import { ClipboardCheck, DollarSign, Calendar, FileText } from "lucide-react";
+
+export const metadata = {
+  title: "Admissions & Enrollment | Greater Grace Christian Academy",
+  description:
+    "Apply for admission at Greater Grace Christian Academy in Apam, Ghana. Learn about our 4-step admission process, entrance requirements, required documents, and enrollment schedule.",
+  keywords: [
+    "GGCA admissions",
+    "Apam school admission",
+    "enrollment Greater Grace Christian Academy",
+    "school admission requirements Ghana",
+    "Creche admission Apam",
+    "Primary school admission Apam",
+    "JHS enrollment Central Region Ghana"
+  ],
+  alternates: {
+    canonical: "/webpages/admissions",
+  },
+  openGraph: {
+    title: "Join Our Community - Admissions | Greater Grace Christian Academy",
+    description:
+      "Begin your educational journey at Greater Grace Christian Academy. Transparent 4-step admission process and high standards of excellence.",
+    url: "https://apamgreatergracechristianacademygh.org/webpages/admissions",
+    siteName: "Greater Grace Christian Academy",
+    images: [
+      {
+        url: "/images/facilities/classroomblock.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Admissions at Greater Grace Christian Academy",
+      },
+    ],
+    locale: "en_GH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Admissions | Greater Grace Christian Academy",
+    description:
+      "Enroll your child at Greater Grace Christian Academy in Apam, Ghana.",
+    images: ["/images/facilities/classroomblock.jpg"],
+  },
+};
 
 export default function Admissions() {
   return (

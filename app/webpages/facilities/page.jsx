@@ -1,7 +1,45 @@
-// "use client";
-
 import FacilityTour from "../../webcomponents/FacilityTour";
 import ImageGallery from "../../webcomponents/ImageGallery";
+
+export const metadata = {
+  title: "School Facilities & Campus Infrastructure | Greater Grace Christian Academy",
+  description:
+    "Take a tour of our modern educational facilities at Greater Grace Christian Academy, Apam: smart classrooms, science labs, digital computer laboratories, library, and sports facilities.",
+  keywords: [
+    "GGCA facilities",
+    "Apam school facilities",
+    "science laboratory school Apam",
+    "computer lab school Apam",
+    "school sports complex Central Region Ghana",
+    "Greater Grace Christian Academy campus"
+  ],
+  alternates: {
+    canonical: "/webpages/facilities",
+  },
+  openGraph: {
+    title: "School Facilities | Greater Grace Christian Academy, Apam",
+    description:
+      "Explore state-of-the-art facilities designed for modern teaching and holistic student growth at Greater Grace Christian Academy.",
+    url: "https://apamgreatergracechristianacademygh.org/webpages/facilities",
+    siteName: "Greater Grace Christian Academy",
+    images: [
+      {
+        url: "/images/facilities/classroomblock.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Campus Facilities at Greater Grace Christian Academy",
+      },
+    ],
+    locale: "en_GH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Campus Facilities | Greater Grace Christian Academy",
+    description: "Explore our state-of-the-art campus and facilities in Apam, Ghana.",
+    images: ["/images/facilities/classroomblock.jpg"],
+  },
+};
 
 const facilityImages = [
   {

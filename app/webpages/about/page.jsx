@@ -11,54 +11,47 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "About | Greater Grace Christian Academy",
+  title: "About Us | Mission, Vision & History | Greater Grace Christian Academy",
   description:
-    "Learn about Greater Grace Christian Academy's mission, vision, core values, and rich history. Discover our journey since our founding in 2010, and our commitment to excellence in education and holistic student development in Apam.",
+    "Learn about Greater Grace Christian Academy's mission, vision, core values, and founding history since 2010. Discover our dedication to academic excellence and Christian values in Apam, Ghana.",
   keywords: [
-    "Christian academy",
-    "education",
-    "school history",
-    "founding story",
-    "mission statement",
-    "core values",
-    "academic excellence",
-    "Greater Grace Christian Academy Apam",
-    "Mr. Acquah",
+    "About Greater Grace Christian Academy",
+    "Christian academy Apam",
+    "school history Apam",
+    "school mission and vision",
+    "core values education",
+    "academic excellence Ghana",
     "Mr. Alfred Acquah",
-    "Mrs. Acquah",
     "Mrs. Innocentia Acquah",
+    "Christian education Apam Central Region",
+    "GGCA history"
   ],
-  // Open Graph / Facebook metadata
+  alternates: {
+    canonical: "/webpages/about",
+  },
   openGraph: {
-    title: "About Greater Grace Christian Academy",
+    title: "About Greater Grace Christian Academy | Mission, Vision & History",
     description:
-      "Discover our mission, vision, core values, and the inspiring founding story of Greater Grace Christian Academy since 2010. Learn how we shape minds and build futures.",
-    url: "https://greatergracechristianacademygh.org/about",
+      "Discover our mission, vision, core values, and founding story of Greater Grace Christian Academy since 2010. Shaping minds and building futures in Apam.",
+    url: "https://apamgreatergracechristianacademygh.org/webpages/about",
     siteName: "Greater Grace Christian Academy",
     images: [
       {
-        url: "https://greatergracechristianacademygh.org/images/facilities/classroomblock.jpg", // Make sure this image is relevant or update if needed
+        url: "/images/facilities/classroomblock.jpg",
         width: 1200,
         height: 630,
-        alt: "Greater Grace Christian Academy campus",
+        alt: "Greater Grace Christian Academy Campus Block, Apam",
       },
     ],
-    locale: "en_US",
+    locale: "en_GH",
     type: "website",
   },
-  // Twitter metadata
   twitter: {
     card: "summary_large_image",
-    title: "About Greater Grace Christian Academy",
+    title: "About Greater Grace Christian Academy | Apam",
     description:
-      "Discover our mission, vision, core values, and the inspiring founding story of Greater Grace Christian Academy since 2010. Learn how we shape minds and build futures.",
-    images: [
-      "https://greatergracechristianacademygh.org/images/facilities/classroomblock.jpg", // Make sure this image is relevant or update if needed
-    ],
-  },
-  // Additional metadata
-  alternates: {
-    canonical: "https://greatergracechristianacademygh.org/about",
+      "Discover our mission, vision, core values, and founding story of Greater Grace Christian Academy since 2010.",
+    images: ["/images/facilities/classroomblock.jpg"],
   },
 };
 

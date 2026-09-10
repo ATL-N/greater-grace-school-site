@@ -2,24 +2,73 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Book, Users, Trophy, Calendar } from "lucide-react";
 import AnniversaryBanner from "./webcomponents/AnniversaryBanner";
-import Confetti from "./webcomponents/Confetti"; // Import the new client component
+import Confetti from "./webcomponents/Confetti";
 import prisma from "@/lib/db";
 
 export const dynamic = 'force-dynamic'; // Force dynamic rendering
 
-async function getLatestStories() {
-  const stories = await prisma.story.findMany({
-    orderBy: {
-      date: 'desc',
-    },
-    take: 3,
-    include: {
-      images: {
-        take: 1, // We only need the first image for the preview
+export const metadata = {
+  title: "Greater Grace Christian Academy | Excellence in Education in Apam",
+  description:
+    "Welcome to Greater Grace Christian Academy in Apam, Ghana. Providing transformative Christian education, academic excellence, modern curriculum, and character development from Creche to JHS.",
+  keywords: [
+    "Greater Grace Christian Academy",
+    "GGCA Apam",
+    "Christian Academy Apam",
+    "best school in Apam Ghana",
+    "Creche Apam",
+    "Primary school Apam",
+    "Junior High School Apam",
+    "admissions Apam school",
+    "BECE excellence Apam"
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Welcome to Greater Grace Christian Academy, Apam",
+    description:
+      "Where innovation meets education. Shaping tomorrow's leaders through excellence in teaching, learning, and Christian moral values.",
+    url: "https://apamapamgreatergracechristianacademygh.org",
+    siteName: "Greater Grace Christian Academy",
+    images: [
+      {
+        url: "/images/facilities/classroomblock.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Greater Grace Christian Academy Campus",
       },
-    },
-  });
-  return stories;
+    ],
+    locale: "en_GH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Welcome to Greater Grace Christian Academy, Apam",
+    description:
+      "Where innovation meets education. Shaping tomorrow's leaders through excellence in teaching, learning, and Christian values.",
+    images: ["/images/facilities/classroomblock.jpg"],
+  },
+};
+
+async function getLatestStories() {
+  try {
+    const stories = await prisma.story.findMany({
+      orderBy: {
+        date: 'desc',
+      },
+      take: 3,
+      include: {
+        images: {
+          take: 1, // We only need the first image for the preview
+        },
+      },
+    });
+    return stories;
+  } catch (error) {
+    console.error("Error fetching latest stories:", error);
+    return [];
+  }
 }
 
 export default async function Home() {
@@ -28,7 +77,6 @@ export default async function Home() {
   return (
     <main className="min-h-screen">
       {/* <Confetti /> */}
-      {/* <Navbar /> */}
 
       {/* Hero Section */}
       <section className="pt-20 pb-12 px-4 sm:px-6 lg:px-8">
@@ -44,11 +92,11 @@ export default async function Home() {
               Welcome to Greater Grace Christian Academy, Apam
             </h1>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Where innovation meets education. Shaping tomorrow's leaders
+              Where innovation meets education. Shaping tomorrow&apos;s leaders
               through excellence in teaching and learning.
             </p>
             <Link
-              href="webpages/admissions"
+              href="/webpages/admissions"
               className="inline-flex items-center px-6 py-3 rounded-full text-white hover-scale"
               style={{ backgroundColor: "var(--primary-color)" }}
             >
@@ -135,7 +183,7 @@ export default async function Home() {
               >
                 <div className="relative w-full h-48">
                   <Image
-                    src={story.images[0]?.url || "/images/placeholder.jpg"} // Use placeholder if no image
+                    src={story.images[0]?.url || "/images/placeholder.jpg"}
                     alt={story.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

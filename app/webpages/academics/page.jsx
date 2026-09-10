@@ -1,8 +1,49 @@
-// "use client";
-
-// import Navbar from "../components/Navbar";
-// import Footer from "../components/Footer";
 import { BookOpen, Star, Users, Award } from "lucide-react";
+
+export const metadata = {
+  title: "Academics & Curriculum | Greater Grace Christian Academy",
+  description:
+    "Explore the comprehensive curriculum and academic programs at Greater Grace Christian Academy, Apam: Pre-School, Primary, and Junior High School (JHS) with 100% BECE pass rate.",
+  keywords: [
+    "GGCA academics",
+    "Apam school curriculum",
+    "Creche Apam",
+    "Kindergarten Apam",
+    "Primary school Apam",
+    "JHS Apam",
+    "BECE pass rate Ghana",
+    "STEM education Apam",
+    "Christian school curriculum Ghana",
+    "academic excellence Apam"
+  ],
+  alternates: {
+    canonical: "/webpages/academics",
+  },
+  openGraph: {
+    title: "Academic Programs & Curriculum | Greater Grace Christian Academy",
+    description:
+      "Modern curriculum, small class sizes, expert faculty, and 100% BECE pass rate at Greater Grace Christian Academy, Apam.",
+    url: "https://apamgreatergracechristianacademygh.org/webpages/academics",
+    siteName: "Greater Grace Christian Academy",
+    images: [
+      {
+        url: "/images/facilities/classroomblock.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Academic Excellence at Greater Grace Christian Academy",
+      },
+    ],
+    locale: "en_GH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Academic Programs | Greater Grace Christian Academy",
+    description:
+      "100% BECE pass rate and comprehensive Christian education in Apam, Ghana.",
+    images: ["/images/facilities/classroomblock.jpg"],
+  },
+};
 
 const programs = [
   {

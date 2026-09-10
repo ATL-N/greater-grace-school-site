@@ -176,6 +176,7 @@ export default function Navbar() {
 
                 <button
                   onClick={toggleTheme}
+                  aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
                   className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-600 transition-colors duration-200"
                   style={{ color: "var(--primary-color)" }}
                 >
@@ -188,6 +189,7 @@ export default function Navbar() {
             <div className="md:hidden">
               <button
                 onClick={toggleTheme}
+                aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
                 className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-600 transition-colors duration-200"
                 style={{ color: "var(--primary-color)" }}
               >

@@ -1,15 +1,49 @@
-// "use client";
-
-// import Navbar from "../components/Navbar";
-// import Footer from "../components/Footer";
 import ContactForm from "../../webcomponents/ContactForm";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+
+export const metadata = {
+  title: "Contact Us & Campus Location | Greater Grace Christian Academy, Apam",
+  description:
+    "Get in touch with Greater Grace Christian Academy in Apam, Central Region, Ghana. Find our school location opposite Apam Senior High School, phone numbers, email, office hours, and Google Map directions.",
+  keywords: [
+    "Contact Greater Grace Christian Academy",
+    "GGCA contact number",
+    "Apam school location",
+    "school opposite Apam Senior High School",
+    "Greater Grace Christian Academy phone",
+    "Apam Central Region school"
+  ],
+  alternates: {
+    canonical: "/webpages/contact",
+  },
+  openGraph: {
+    title: "Contact Us & Campus Location | Greater Grace Christian Academy",
+    description:
+      "Reach out to Greater Grace Christian Academy in Apam, Ghana. Campus location, phone numbers, email, and visiting hours.",
+    url: "https://apamgreatergracechristianacademygh.org/webpages/contact",
+    siteName: "Greater Grace Christian Academy",
+    images: [
+      {
+        url: "/images/facilities/classroomblock.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Greater Grace Christian Academy Location Apam",
+      },
+    ],
+    locale: "en_GH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us | Greater Grace Christian Academy",
+    description: "Get in touch with Greater Grace Christian Academy in Apam, Ghana.",
+    images: ["/images/facilities/classroomblock.jpg"],
+  },
+};
 
 export default function Contact() {
   return (
     <main className="min-h-screen">
-      {/* <Navbar /> */}
-
       {/* Hero Section */}
       <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center animated-element">
@@ -77,9 +111,7 @@ export default function Contact() {
             />
             <h3 className="text-xl font-semibold mb-2">Email Us</h3>
             <p>
-              info@cyanacademy.edu
-              <br />
-              admissions@cyanacademy.edu
+              gracapam@gmail.com
             </p>
           </div>
 
@@ -94,9 +126,9 @@ export default function Contact() {
             />
             <h3 className="text-xl font-semibold mb-2">Office Hours</h3>
             <p>
-              Monday - Friday: 8AM - 4PM
+              Monday - Friday: 7:30AM - 5:00PM
               <br />
-              Saturday: 9AM - 12PM
+              Saturday: Closed
             </p>
           </div>
         </div>

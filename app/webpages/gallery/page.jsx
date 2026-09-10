@@ -4,6 +4,45 @@ import Image from "next/image";
 
 export const dynamic = 'force-dynamic'; // Force dynamic rendering
 
+export const metadata = {
+  title: "School Gallery & Campus Highlights | Greater Grace Christian Academy",
+  description:
+    "Explore photo and video highlights from Greater Grace Christian Academy, Apam. Take a visual journey through our campus facilities, academic events, cultural days, and celebrations.",
+  keywords: [
+    "GGCA gallery",
+    "Apam school photos",
+    "school events Apam",
+    "Greater Grace Christian Academy gallery",
+    "campus photos Ghana school"
+  ],
+  alternates: {
+    canonical: "/webpages/gallery",
+  },
+  openGraph: {
+    title: "School Gallery & Highlights | Greater Grace Christian Academy",
+    description:
+      "Explore campus facilities and exciting school events at Greater Grace Christian Academy, Apam.",
+    url: "https://apamgreatergracechristianacademygh.org/webpages/gallery",
+    siteName: "Greater Grace Christian Academy",
+    images: [
+      {
+        url: "/images/facilities/classroomblock.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Greater Grace Christian Academy Gallery",
+      },
+    ],
+    locale: "en_GH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "School Gallery | Greater Grace Christian Academy",
+    description: "Explore campus facilities and events at Greater Grace Christian Academy.",
+    images: ["/images/facilities/classroomblock.jpg"],
+  },
+};
+
 async function getFeaturedStories() {
   const stories = await prisma.story.findMany({
     orderBy: {

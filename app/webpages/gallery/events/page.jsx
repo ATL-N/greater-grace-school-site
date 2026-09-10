@@ -4,6 +4,45 @@ import Image from "next/image";
 
 export const dynamic = 'force-dynamic'; // Force dynamic rendering
 
+export const metadata = {
+  title: "School Events & News | Greater Grace Christian Academy",
+  description:
+    "Stay updated with recent celebrations, science fairs, sports days, graduation ceremonies, and academic events at Greater Grace Christian Academy, Apam.",
+  keywords: [
+    "GGCA events",
+    "Apam school events",
+    "science fair Apam",
+    "graduation Greater Grace Christian Academy",
+    "school news Apam"
+  ],
+  alternates: {
+    canonical: "/webpages/gallery/events",
+  },
+  openGraph: {
+    title: "School Events & Stories | Greater Grace Christian Academy",
+    description:
+      "Explore photo stories, student achievements, and community events from Greater Grace Christian Academy, Apam.",
+    url: "https://apamgreatergracechristianacademygh.org/webpages/gallery/events",
+    siteName: "Greater Grace Christian Academy",
+    images: [
+      {
+        url: "/images/facilities/classroomblock.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Events at Greater Grace Christian Academy",
+      },
+    ],
+    locale: "en_GH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "School Events & News | Greater Grace Christian Academy",
+    description: "Latest events, student news, and celebrations from GGCA Apam.",
+    images: ["/images/facilities/classroomblock.jpg"],
+  },
+};
+
 // Event Card Component - adapted for the new data structure
 const EventCard = ({ event }) => {
   const imageUrl = event.images?.[0]?.url || "/images/placeholder.jpg";

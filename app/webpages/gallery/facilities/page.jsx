@@ -1,8 +1,45 @@
-"use client";
-
 import Link from "next/link";
 import FacilityTour from "../../../webcomponents/FacilityTour";
 import ImageGallery from "../../../webcomponents/ImageGallery";
+
+export const metadata = {
+  title: "Campus Facilities Photo Tour | Greater Grace Christian Academy",
+  description:
+    "View high-resolution photographs and virtual tours of the classrooms, computer labs, digital center, and campus facilities at Greater Grace Christian Academy, Apam.",
+  keywords: [
+    "GGCA facilities photos",
+    "Apam school classroom photos",
+    "computer lab photos",
+    "virtual tour GGCA",
+    "Greater Grace Christian Academy campus"
+  ],
+  alternates: {
+    canonical: "/webpages/gallery/facilities",
+  },
+  openGraph: {
+    title: "Campus Facilities Tour | Greater Grace Christian Academy",
+    description:
+      "Take a virtual tour and view photos of our classrooms, science labs, and learning centers.",
+    url: "https://apamgreatergracechristianacademygh.org/webpages/gallery/facilities",
+    siteName: "Greater Grace Christian Academy",
+    images: [
+      {
+        url: "/images/facilities/classroomblock.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Greater Grace Christian Academy Campus Facilities",
+      },
+    ],
+    locale: "en_GH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Campus Facilities Tour | Greater Grace Christian Academy",
+    description: "Explore the modern campus facilities at GGCA Apam.",
+    images: ["/images/facilities/classroomblock.jpg"],
+  },
+};
 
 const facilityImages = [
   {

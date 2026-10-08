@@ -32,6 +32,8 @@ services:
       - no-new-privileges:true
     labels:
       - traefik.enable=true
+
+      # Main domain
       - traefik.http.routers.ggca-http.rule=Host(`${DOMAIN}`)
       - traefik.http.routers.ggca-http.entrypoints=http
       - traefik.http.routers.ggca-http.middlewares=https-redirect
@@ -41,6 +43,20 @@ services:
       - traefik.http.routers.ggca-https.tls.certresolver=le
       - traefik.http.routers.ggca-https.service=ggca-service
       - traefik.http.services.ggca-service.loadbalancer.server.port=3000
+
+      # Secondary domain -> redirect to main domain
+      - traefik.http.routers.ggca-alt-http.rule=Host(`${DOMAIN2}`) || Host(`www.${DOMAIN2}`)
+      - traefik.http.routers.ggca-alt-http.entrypoints=http
+      - traefik.http.routers.ggca-alt-http.middlewares=ggca-redirect-main
+      - traefik.http.routers.ggca-alt-https.rule=Host(`${DOMAIN2}`) || Host(`www.${DOMAIN2}`)
+      - traefik.http.routers.ggca-alt-https.entrypoints=https
+      - traefik.http.routers.ggca-alt-https.tls=true
+      - traefik.http.routers.ggca-alt-https.tls.certresolver=le
+      - traefik.http.routers.ggca-alt-https.middlewares=ggca-redirect-main
+      - traefik.http.routers.ggca-alt-https.service=ggca-service
+      - traefik.http.middlewares.ggca-redirect-main.redirectregex.regex=^https?://[^/]+(.*)
+      - traefik.http.middlewares.ggca-redirect-main.redirectregex.replacement=https://${DOMAIN}$${1}
+      - traefik.http.middlewares.ggca-redirect-main.redirectregex.permanent=true
     depends_on:
       ggca-db:
         condition: service_healthy
@@ -99,7 +115,7 @@ services:
     volumes:
       - redis-data:/data
     command: redis-server --requirepass ${REDIS_PASSWORD:-changeme}
-  
+
   cron-scheduler:
     build:
       context: .

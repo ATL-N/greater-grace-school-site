@@ -124,7 +124,7 @@ export default function Navbar() {
                 className="text-2xl font-bold hover:opacity-80 transition-opacity duration-200"
                 style={{ color: "var(--primary-color)" }}
               >
-                G G C A. @15
+                G G C A
               </Link>
             </div>
 
